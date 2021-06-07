@@ -13,9 +13,7 @@ public class AdresseEntity {
     private String addressCountry;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ADRESSE_SEQ")
-    @SequenceGenerator(name = "ADRESSE_SEQ", sequenceName = "ADRESSE_SEQ", allocationSize = 1)
-    @Column(name = "address_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "address_id", nullable = false)
     public int getAddressId() {
         return addressId;
     }
@@ -25,7 +23,7 @@ public class AdresseEntity {
     }
 
     @Basic
-    @Column(name = "address_number")
+    @Column(name = "address_number", nullable = true)
     public Integer getAddressNumber() {
         return addressNumber;
     }
@@ -35,7 +33,7 @@ public class AdresseEntity {
     }
 
     @Basic
-    @Column(name = "address_street")
+    @Column(name = "address_street", nullable = true, length = 50)
     public String getAddressStreet() {
         return addressStreet;
     }
@@ -45,7 +43,7 @@ public class AdresseEntity {
     }
 
     @Basic
-    @Column(name = "address_city")
+    @Column(name = "address_city", nullable = true, length = 20)
     public String getAddressCity() {
         return addressCity;
     }
@@ -55,7 +53,7 @@ public class AdresseEntity {
     }
 
     @Basic
-    @Column(name = "address_country")
+    @Column(name = "address_country", nullable = true, length = 20)
     public String getAddressCountry() {
         return addressCountry;
     }

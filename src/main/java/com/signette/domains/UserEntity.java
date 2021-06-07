@@ -17,9 +17,11 @@ public class UserEntity {
     private String userPassword;
     private String userPhone;
     private String userUsername;
+    private AdresseEntity adresseByUserFkAddressId;
+    private RoleEntity roleByUserFkRoleId;
 
     @Basic
-    @Column(name = "user_date_of_birth")
+    @Column(name = "user_date_of_birth", nullable = false)
     public Date getUserDateOfBirth() {
         return userDateOfBirth;
     }
@@ -29,7 +31,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_entry_date")
+    @Column(name = "user_entry_date", nullable = false)
     public Date getUserEntryDate() {
         return userEntryDate;
     }
@@ -39,9 +41,7 @@ public class UserEntity {
     }
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "USER_SEQ")
-    @SequenceGenerator(name = "USER_SEQ", sequenceName = "USER_SEQ", allocationSize = 1)
-    @Column(name = "user_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "user_id", nullable = false)
     public int getUserId() {
         return userId;
     }
@@ -51,7 +51,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_lastname")
+    @Column(name = "user_lastname", nullable = false, length = 20)
     public String getUserLastname() {
         return userLastname;
     }
@@ -61,7 +61,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_mail")
+    @Column(name = "user_mail", nullable = false, length = 30)
     public String getUserMail() {
         return userMail;
     }
@@ -71,7 +71,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_name")
+    @Column(name = "user_name", nullable = false, length = 30)
     public String getUserName() {
         return userName;
     }
@@ -81,7 +81,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_nss")
+    @Column(name = "user_nss", nullable = false)
     public int getUserNss() {
         return userNss;
     }
@@ -91,7 +91,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_password")
+    @Column(name = "user_password", nullable = false, length = 100)
     public String getUserPassword() {
         return userPassword;
     }
@@ -101,7 +101,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_phone")
+    @Column(name = "user_phone", nullable = false, length = 14)
     public String getUserPhone() {
         return userPhone;
     }
@@ -111,7 +111,7 @@ public class UserEntity {
     }
 
     @Basic
-    @Column(name = "user_username")
+    @Column(name = "user_username", nullable = false, length = 20)
     public String getUserUsername() {
         return userUsername;
     }
@@ -131,5 +131,25 @@ public class UserEntity {
     @Override
     public int hashCode() {
         return Objects.hash(userDateOfBirth, userEntryDate, userId, userLastname, userMail, userName, userNss, userPassword, userPhone, userUsername);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_fk_address_id", referencedColumnName = "address_id", nullable = false)
+    public AdresseEntity getAdresseByUserFkAddressId() {
+        return adresseByUserFkAddressId;
+    }
+
+    public void setAdresseByUserFkAddressId(AdresseEntity adresseByUserFkAddressId) {
+        this.adresseByUserFkAddressId = adresseByUserFkAddressId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user_fk_role_id", referencedColumnName = "role_id", nullable = false)
+    public RoleEntity getRoleByUserFkRoleId() {
+        return roleByUserFkRoleId;
+    }
+
+    public void setRoleByUserFkRoleId(RoleEntity roleByUserFkRoleId) {
+        this.roleByUserFkRoleId = roleByUserFkRoleId;
     }
 }

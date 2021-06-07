@@ -11,9 +11,7 @@ public class DocumentEntity {
     private String documentLink;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "DOCUMENT_SEQ")
-    @SequenceGenerator(name = "DOCUMENT_SEQ", sequenceName = "DOCUMENT_SEQ", allocationSize = 1)
-    @Column(name = "document_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "document_id", nullable = false)
     public int getDocumentId() {
         return documentId;
     }
@@ -23,7 +21,7 @@ public class DocumentEntity {
     }
 
     @Basic
-    @Column(name = "document_name")
+    @Column(name = "document_name", nullable = false, length = 20)
     public String getDocumentName() {
         return documentName;
     }
@@ -33,7 +31,7 @@ public class DocumentEntity {
     }
 
     @Basic
-    @Column(name = "document_link")
+    @Column(name = "document_link", nullable = false, length = 100)
     public String getDocumentLink() {
         return documentLink;
     }

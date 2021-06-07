@@ -10,9 +10,7 @@ public class PostTypeEntity {
     private String postName;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "POST_SEQ")
-    @SequenceGenerator(name = "POST_SEQ", sequenceName = "POST_SEQ", allocationSize = 1)
-    @Column(name = "post_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "post_id", nullable = false)
     public int getPostId() {
         return postId;
     }
@@ -22,7 +20,7 @@ public class PostTypeEntity {
     }
 
     @Basic
-    @Column(name = "post_name")
+    @Column(name = "post_name", nullable = false, length = 20)
     public String getPostName() {
         return postName;
     }

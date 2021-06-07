@@ -10,11 +10,13 @@ public class TripEntity {
     private int tripId;
     private Date tripStartDate;
     private Date tripEndDate;
+    private DocumentEntity documentByTripFkDocumentId;
+    private ClientEntity clientByTripFkClientId;
+    private CenterEntity centerByTripFkCenterId;
+    private PostTypeEntity postTypeByTripFkPostId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "TRIP_SEQ")
-    @SequenceGenerator(name = "TRIP_SEQ", sequenceName = "TRIP_SEQ", allocationSize = 1)
-    @Column(name = "trip_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "trip_id", nullable = false)
     public int getTripId() {
         return tripId;
     }
@@ -24,7 +26,7 @@ public class TripEntity {
     }
 
     @Basic
-    @Column(name = "trip_start_date")
+    @Column(name = "trip_start_date", nullable = false)
     public Date getTripStartDate() {
         return tripStartDate;
     }
@@ -34,7 +36,7 @@ public class TripEntity {
     }
 
     @Basic
-    @Column(name = "trip_end_date")
+    @Column(name = "trip_end_date", nullable = false)
     public Date getTripEndDate() {
         return tripEndDate;
     }
@@ -54,5 +56,45 @@ public class TripEntity {
     @Override
     public int hashCode() {
         return Objects.hash(tripId, tripStartDate, tripEndDate);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "trip_fk_document_id", referencedColumnName = "document_id", nullable = false)
+    public DocumentEntity getDocumentByTripFkDocumentId() {
+        return documentByTripFkDocumentId;
+    }
+
+    public void setDocumentByTripFkDocumentId(DocumentEntity documentByTripFkDocumentId) {
+        this.documentByTripFkDocumentId = documentByTripFkDocumentId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "trip_fk_client_id", referencedColumnName = "client_id", nullable = false)
+    public ClientEntity getClientByTripFkClientId() {
+        return clientByTripFkClientId;
+    }
+
+    public void setClientByTripFkClientId(ClientEntity clientByTripFkClientId) {
+        this.clientByTripFkClientId = clientByTripFkClientId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "trip_fk_center_id", referencedColumnName = "center_id", nullable = false)
+    public CenterEntity getCenterByTripFkCenterId() {
+        return centerByTripFkCenterId;
+    }
+
+    public void setCenterByTripFkCenterId(CenterEntity centerByTripFkCenterId) {
+        this.centerByTripFkCenterId = centerByTripFkCenterId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "trip_fk_post_id", referencedColumnName = "post_id")
+    public PostTypeEntity getPostTypeByTripFkPostId() {
+        return postTypeByTripFkPostId;
+    }
+
+    public void setPostTypeByTripFkPostId(PostTypeEntity postTypeByTripFkPostId) {
+        this.postTypeByTripFkPostId = postTypeByTripFkPostId;
     }
 }

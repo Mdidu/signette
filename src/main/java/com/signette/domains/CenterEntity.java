@@ -12,11 +12,10 @@ public class CenterEntity {
     private String centerMail;
     private String centerPhone;
     private String centerComment;
+    private AdresseEntity adresseByCenterFkAddressId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "CENTER_SEQ")
-    @SequenceGenerator(name = "CENTER_SEQ", sequenceName = "CENTER_SEQ", allocationSize = 1)
-    @Column(name = "center_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "center_id", nullable = false)
     public int getCenterId() {
         return centerId;
     }
@@ -26,7 +25,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_picture")
+    @Column(name = "center_picture", nullable = true, length = 100)
     public String getCenterPicture() {
         return centerPicture;
     }
@@ -36,7 +35,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_name")
+    @Column(name = "center_name", nullable = false, length = 20)
     public String getCenterName() {
         return centerName;
     }
@@ -46,7 +45,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_mail")
+    @Column(name = "center_mail", nullable = false, length = 20)
     public String getCenterMail() {
         return centerMail;
     }
@@ -56,7 +55,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_phone")
+    @Column(name = "center_phone", nullable = true, length = 14)
     public String getCenterPhone() {
         return centerPhone;
     }
@@ -66,7 +65,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_comment")
+    @Column(name = "center_comment", nullable = true, length = -1)
     public String getCenterComment() {
         return centerComment;
     }
@@ -86,5 +85,15 @@ public class CenterEntity {
     @Override
     public int hashCode() {
         return Objects.hash(centerId, centerPicture, centerName, centerMail, centerPhone, centerComment);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "center_fk_address_id", referencedColumnName = "address_id", nullable = false)
+    public AdresseEntity getAdresseByCenterFkAddressId() {
+        return adresseByCenterFkAddressId;
+    }
+
+    public void setAdresseByCenterFkAddressId(AdresseEntity adresseByCenterFkAddressId) {
+        this.adresseByCenterFkAddressId = adresseByCenterFkAddressId;
     }
 }

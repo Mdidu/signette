@@ -10,11 +10,10 @@ public class ClientEntity {
     private String clientWording;
     private String clientMail;
     private String clientPhone;
+    private AdresseEntity adresseByClientFkAddressId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "CLIENT_SEQ")
-    @SequenceGenerator(name = "CLIENT_SEQ", sequenceName = "CLIENT_SEQ", allocationSize = 1)
-    @Column(name = "client_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "client_id", nullable = false)
     public int getClientId() {
         return clientId;
     }
@@ -24,7 +23,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "client_wording")
+    @Column(name = "client_wording", nullable = false, length = 20)
     public String getClientWording() {
         return clientWording;
     }
@@ -34,7 +33,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "client_mail")
+    @Column(name = "client_mail", nullable = true, length = 30)
     public String getClientMail() {
         return clientMail;
     }
@@ -44,7 +43,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "client_phone")
+    @Column(name = "client_phone", nullable = true, length = 14)
     public String getClientPhone() {
         return clientPhone;
     }
@@ -64,5 +63,15 @@ public class ClientEntity {
     @Override
     public int hashCode() {
         return Objects.hash(clientId, clientWording, clientMail, clientPhone);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "client_fk_address_id", referencedColumnName = "address_id", nullable = false)
+    public AdresseEntity getAdresseByClientFkAddressId() {
+        return adresseByClientFkAddressId;
+    }
+
+    public void setAdresseByClientFkAddressId(AdresseEntity adresseByClientFkAddressId) {
+        this.adresseByClientFkAddressId = adresseByClientFkAddressId;
     }
 }

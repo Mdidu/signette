@@ -10,9 +10,7 @@ public class RoleEntity {
     private String roleType;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ROLE_SEQ")
-    @SequenceGenerator(name = "ROLE_SEQ", sequenceName = "ROLE_SEQ", allocationSize = 1)
-    @Column(name = "role_id", unique = true, nullable = false, precision = 22, scale = 0)
+    @Column(name = "role_id", nullable = false)
     public int getRoleId() {
         return roleId;
     }
@@ -22,7 +20,7 @@ public class RoleEntity {
     }
 
     @Basic
-    @Column(name = "role_type")
+    @Column(name = "role_type", nullable = false, length = 20)
     public String getRoleType() {
         return roleType;
     }
