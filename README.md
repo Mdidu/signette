@@ -1,7 +1,7 @@
 # signette
 Projet fil rouge en groupe (4 personnes) en méthodologie agile: 
 
-- Mdidu
+- Alexandre Meddas (Mdidu)
 - Alexandre Repaire
 - Farid LAGSSAIBI (GitHub: Farid-lgs)
 
