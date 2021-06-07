@@ -13,6 +13,8 @@ public class AdresseEntity {
     private String addressCountry;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ADRESSE_SEQ")
+    @SequenceGenerator(name = "ADRESSE_SEQ", sequenceName = "ADRESSE_SEQ", allocationSize = 1)
     @Column(name = "address_id", nullable = false)
     public int getAddressId() {
         return addressId;
