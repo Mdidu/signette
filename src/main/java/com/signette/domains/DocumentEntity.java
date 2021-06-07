@@ -1,0 +1,57 @@
+package com.signette.domains;
+
+import javax.persistence.*;
+import java.util.Objects;
+
+@Entity
+@Table(name = "Document", schema = "public", catalog = "SIGNETTE")
+public class DocumentEntity {
+    private int documentId;
+    private String documentName;
+    private String documentLink;
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "DOCUMENT_SEQ")
+    @SequenceGenerator(name = "DOCUMENT_SEQ", sequenceName = "DOCUMENT_SEQ", allocationSize = 1)
+    @Column(name = "document_id", unique = true, nullable = false, precision = 22, scale = 0)
+    public int getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(int documentId) {
+        this.documentId = documentId;
+    }
+
+    @Basic
+    @Column(name = "document_name")
+    public String getDocumentName() {
+        return documentName;
+    }
+
+    public void setDocumentName(String documentName) {
+        this.documentName = documentName;
+    }
+
+    @Basic
+    @Column(name = "document_link")
+    public String getDocumentLink() {
+        return documentLink;
+    }
+
+    public void setDocumentLink(String documentLink) {
+        this.documentLink = documentLink;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DocumentEntity that = (DocumentEntity) o;
+        return documentId == that.documentId && Objects.equals(documentName, that.documentName) && Objects.equals(documentLink, that.documentLink);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(documentId, documentName, documentLink);
+    }
+}
