@@ -11,5 +11,5 @@ public interface GlobalService<T> {
 
     List<T> findAll();
 
-    T findById(long id);
+    T findById(int id);
 }

@@ -1,4 +1,8 @@
 package com.signette.service;
 
-public class CenterService {
+import com.signette.domains.CenterEntity;
+
+import java.util.List;
+
+public interface CenterService extends GlobalService<CenterEntity> {
 }
