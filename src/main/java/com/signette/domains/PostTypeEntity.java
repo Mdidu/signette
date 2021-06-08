@@ -10,8 +10,6 @@ public class PostTypeEntity {
     private String postName;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "POST_SEQ")
-    @SequenceGenerator(name = "POST_SEQ", sequenceName = "POST_SEQ", allocationSize = 1)
     @Column(name = "post_id", nullable = false)
     public int getPostId() {
         return postId;

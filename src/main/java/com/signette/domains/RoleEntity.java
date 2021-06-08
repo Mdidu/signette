@@ -10,8 +10,6 @@ public class RoleEntity {
     private String roleType;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ROLE_SEQ")
-    @SequenceGenerator(name = "ROLE_SEQ", sequenceName = "ROLE_SEQ", allocationSize = 1)
     @Column(name = "role_id", nullable = false)
     public int getRoleId() {
         return roleId;

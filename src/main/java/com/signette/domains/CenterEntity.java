@@ -15,8 +15,6 @@ public class CenterEntity {
     private AdresseEntity adresseByCenterFkAddressId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "CENTER_SEQ")
-    @SequenceGenerator(name = "CENTER_SEQ", sequenceName = "CENTER_SEQ", allocationSize = 1, initialValue = 1)
     @Column(name = "center_id", nullable = false)
     public int getCenterId() {
         return centerId;

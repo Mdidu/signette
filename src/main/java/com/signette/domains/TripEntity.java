@@ -16,8 +16,6 @@ public class TripEntity {
     private PostTypeEntity postTypeByTripFkPostId;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "TRIP_SEQ")
-    @SequenceGenerator(name = "TRIP_SEQ", sequenceName = "TRIP_SEQ", allocationSize = 1)
     @Column(name = "trip_id", nullable = false)
     public int getTripId() {
         return tripId;
