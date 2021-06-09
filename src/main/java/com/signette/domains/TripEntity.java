@@ -13,10 +13,11 @@ public class TripEntity {
     private DocumentEntity documentByTripFkDocumentId;
     private ClientEntity clientByTripFkClientId;
     private CenterEntity centerByTripFkCenterId;
-    private PostTypeEntity postTypeByTripFkPostId;
 
     @Id
-    @Column(name = "trip_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "TRIP_SEQ")
+    @SequenceGenerator(name = "TRIP_SEQ", sequenceName = "TRIP_SEQ", allocationSize = 1)
+    @Column(name = "trip_id", unique = true, nullable = false, precision = 22, scale = 0)
     public int getTripId() {
         return tripId;
     }
@@ -86,15 +87,5 @@ public class TripEntity {
 
     public void setCenterByTripFkCenterId(CenterEntity centerByTripFkCenterId) {
         this.centerByTripFkCenterId = centerByTripFkCenterId;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "trip_fk_post_id", referencedColumnName = "post_id")
-    public PostTypeEntity getPostTypeByTripFkPostId() {
-        return postTypeByTripFkPostId;
-    }
-
-    public void setPostTypeByTripFkPostId(PostTypeEntity postTypeByTripFkPostId) {
-        this.postTypeByTripFkPostId = postTypeByTripFkPostId;
     }
 }

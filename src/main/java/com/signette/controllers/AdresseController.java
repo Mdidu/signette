@@ -1,9 +1,7 @@
 package com.signette.controllers;
 
 import com.signette.domains.AdresseEntity;
-import com.signette.domains.ClientEntity;
 import com.signette.service.AdresseService;
-import com.signette.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

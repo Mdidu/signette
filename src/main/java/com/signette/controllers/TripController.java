@@ -1,8 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.DocumentTypeEntity;
 import com.signette.domains.TripEntity;
-import com.signette.service.DocumentTypeService;
 import com.signette.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

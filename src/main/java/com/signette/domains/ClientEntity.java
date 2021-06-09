@@ -13,7 +13,9 @@ public class ClientEntity {
     private AdresseEntity adresseByClientFkAddressId;
 
     @Id
-    @Column(name = "client_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "CLIENT_SEQ")
+    @SequenceGenerator(name = "CLIENT_SEQ", sequenceName = "CLIENT_SEQ", allocationSize = 1)
+    @Column(name = "client_id", unique = true, nullable = false, precision = 22, scale = 0)
     public int getClientId() {
         return clientId;
     }
