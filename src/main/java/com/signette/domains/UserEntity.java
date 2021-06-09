@@ -20,6 +20,11 @@ public class UserEntity {
     private AdresseEntity adresseByUserFkAddressId;
     private RoleEntity roleByUserFkRoleId;
 
+    public UserEntity(String mail, String password) {
+        this.userMail = mail;
+        this.userPassword = password;
+    }
+
     @Basic
     @Column(name = "user_date_of_birth", nullable = false)
     public Date getUserDateOfBirth() {
