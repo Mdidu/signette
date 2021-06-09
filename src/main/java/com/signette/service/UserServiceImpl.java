@@ -42,12 +42,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<UserEntity> findByMail(String mail) {
-        return userRepository.findByMail(mail);
+    public Optional<UserEntity> findByUserMail(String mail) {
+        return userRepository.findByUserMail(mail);
     }
 
     @Override
-    public boolean existsByMail(String mail) {
-        return userRepository.existsByMail(mail);
+    public boolean existsByUserMail(String mail) {
+        return userRepository.existsByUserMail(mail);
     }
 }
