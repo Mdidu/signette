@@ -13,7 +13,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String mail) throwsgit add -- UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUserMail(mail)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + mail));
 
