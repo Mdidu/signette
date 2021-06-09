@@ -7,7 +7,7 @@ import java.util.Objects;
 @Table(name = "Role", schema = "public", catalog = "SIGNETTE")
 public class RoleEntity {
     private int roleId;
-    private String roleType;
+    private ERole roleType;
 
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "ROLE_SEQ")
@@ -22,12 +22,13 @@ public class RoleEntity {
     }
 
     @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "role_type", unique = true, nullable = false, length = 20)
-    public String getRoleType() {
+    public ERole getRoleType() {
         return roleType;
     }
 
-    public void setRoleType(String roleType) {
+    public void setRoleType(ERole roleType) {
         this.roleType = roleType;
     }
 
