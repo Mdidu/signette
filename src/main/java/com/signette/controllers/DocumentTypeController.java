@@ -1,7 +1,6 @@
 package com.signette.controllers;
 
 import com.signette.domains.DocumentTypeEntity;
-import com.signette.service.DocumentService;
 import com.signette.service.DocumentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -10,7 +10,9 @@ public class DocumentTypeEntity {
     private String documenttypeName;
 
     @Id
-    @Column(name = "documenttype_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "DOCUMENT_TYPE_SEQ")
+    @SequenceGenerator(name = "DOCUMENT_TYPE_SEQ", sequenceName = "DOCUMENT_TYPE_SEQ", allocationSize = 1)
+    @Column(name = "documenttype_id", unique = true, nullable = false, precision = 22, scale = 0)
     public int getDocumenttypeId() {
         return documenttypeId;
     }

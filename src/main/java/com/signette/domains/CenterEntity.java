@@ -15,7 +15,9 @@ public class CenterEntity {
     private AdresseEntity adresseByCenterFkAddressId;
 
     @Id
-    @Column(name = "center_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "CENTER_SEQ")
+    @SequenceGenerator(name = "CENTER_SEQ", sequenceName = "CENTER_SEQ", allocationSize = 1)
+    @Column(name = "center_id", unique = true, nullable = false, precision = 22, scale = 0)
     public int getCenterId() {
         return centerId;
     }
@@ -65,7 +67,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_comment", nullable = true, length = -1)
+    @Column(name = "center_comment", nullable = true, length = 255)
     public String getCenterComment() {
         return centerComment;
     }

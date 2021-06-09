@@ -11,7 +11,9 @@ public class DocumentEntity {
     private String documentLink;
 
     @Id
-    @Column(name = "document_id", nullable = false)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "DOCUMENT_SEQ")
+    @SequenceGenerator(name = "DOCUMENT_SEQ", sequenceName = "DOCUMENT_SEQ", allocationSize = 1)
+    @Column(name = "document_id", unique = true, nullable = false, precision = 22, scale = 0)
     public int getDocumentId() {
         return documentId;
     }
