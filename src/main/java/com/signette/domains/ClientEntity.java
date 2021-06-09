@@ -35,7 +35,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "client_mail", nullable = true, length = 30)
+    @Column(name = "client_mail", unique = true, nullable = true, length = 30)
     public String getClientMail() {
         return clientMail;
     }

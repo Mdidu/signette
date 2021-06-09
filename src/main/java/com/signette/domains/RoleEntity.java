@@ -22,7 +22,7 @@ public class RoleEntity {
     }
 
     @Basic
-    @Column(name = "role_type", nullable = false, length = 20)
+    @Column(name = "role_type", unique = true, nullable = false, length = 20)
     public String getRoleType() {
         return roleType;
     }

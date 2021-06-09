@@ -47,7 +47,7 @@ public class CenterEntity {
     }
 
     @Basic
-    @Column(name = "center_mail", nullable = false, length = 20)
+    @Column(name = "center_mail", unique = true, nullable = false, length = 20)
     public String getCenterMail() {
         return centerMail;
     }
