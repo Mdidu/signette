@@ -85,7 +85,6 @@ public class AuthController {
         }
 
         // Create new user's account
-        // TODO ADD DATA du USER
         UserEntity user = new UserEntity(
                 signUpRequest.getUserDateOfBirth(),
                 signUpRequest.getUserEntryDate(),
