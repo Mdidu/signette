@@ -85,8 +85,18 @@ public class AuthController {
         }
 
         // Create new user's account
-        UserEntity user = new UserEntity(signUpRequest.getMail(),
-                Encrypt.encoder().encode(signUpRequest.getPassword()));
+        // TODO ADD DATA du USER
+        UserEntity user = new UserEntity(
+                signUpRequest.getUserDateOfBirth(),
+                signUpRequest.getUserEntryDate(),
+                signUpRequest.getUserLastname(),
+                signUpRequest.getMail(),
+                signUpRequest.getUserName(),
+                signUpRequest.getUserNss(),
+                Encrypt.encoder().encode(signUpRequest.getPassword()),
+                signUpRequest.getUserPhone(),
+                signUpRequest.getUserUsername()
+        );
 
         int idRoles = signUpRequest.getRoleId();
         RoleEntity roles = new RoleEntity();

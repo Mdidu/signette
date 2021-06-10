@@ -18,6 +18,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void add(UserEntity user) {
+        System.out.println(user);
         userRepository.save(user);
     }
 

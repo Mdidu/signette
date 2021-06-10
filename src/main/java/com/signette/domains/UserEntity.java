@@ -1,7 +1,7 @@
 package com.signette.domains;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -20,9 +20,24 @@ public class UserEntity {
     private AdresseEntity adresseByUserFkAddressId;
     private RoleEntity roleByUserFkRoleId;
 
+    public UserEntity() {
+    }
+
     public UserEntity(String mail, String password) {
         this.userMail = mail;
         this.userPassword = password;
+    }
+
+    public UserEntity(Date userDateOfBirth, Date userEntryDate, String userLastname, String userMail, String userName, int userNss, String userPassword, String userPhone, String userUsername) {
+        this.userDateOfBirth = userDateOfBirth;
+        this.userEntryDate = userEntryDate;
+        this.userLastname = userLastname;
+        this.userMail = userMail;
+        this.userName = userName;
+        this.userNss = userNss;
+        this.userPassword = userPassword;
+        this.userPhone = userPhone;
+        this.userUsername = userUsername;
     }
 
     @Basic
@@ -158,5 +173,23 @@ public class UserEntity {
 
     public void setRoleByUserFkRoleId(RoleEntity roleByUserFkRoleId) {
         this.roleByUserFkRoleId = roleByUserFkRoleId;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "userDateOfBirth=" + userDateOfBirth +
+                ", userEntryDate=" + userEntryDate +
+                ", userId=" + userId +
+                ", userLastname='" + userLastname + '\'' +
+                ", userMail='" + userMail + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userNss=" + userNss +
+                ", userPassword='" + userPassword + '\'' +
+                ", userPhone='" + userPhone + '\'' +
+                ", userUsername='" + userUsername + '\'' +
+                ", adresseByUserFkAddressId=" + adresseByUserFkAddressId +
+                ", roleByUserFkRoleId=" + roleByUserFkRoleId +
+                '}';
     }
 }
