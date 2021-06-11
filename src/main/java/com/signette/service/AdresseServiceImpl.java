@@ -17,7 +17,7 @@ public class AdresseServiceImpl implements AdresseService{
 
     @Override
     public void add(AdresseEntity adresse) {
-        adresseRepository.save(adresse);
+//        adresseRepository.save(adresse);
     }
 
     @Override
@@ -38,5 +38,11 @@ public class AdresseServiceImpl implements AdresseService{
     @Override
     public AdresseEntity findById(int id) {
         return adresseRepository.findById(id).get();
+    }
+
+    @Override
+    public AdresseEntity addAdresse(AdresseEntity adresse) {
+        AdresseEntity address = adresseRepository.save(adresse);
+        return address;
     }
 }

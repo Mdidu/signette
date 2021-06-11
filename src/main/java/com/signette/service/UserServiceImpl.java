@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepository userRepository;
 
     @Override
     public void add(UserEntity user) {
-        System.out.println(user);
         userRepository.save(user);
     }
 
