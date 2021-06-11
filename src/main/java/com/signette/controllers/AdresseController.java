@@ -21,13 +21,17 @@ public class AdresseController {
     }
 
     @GetMapping("/read/{id}")
-    public AdresseService readById(@PathVariable int id){
-        return (AdresseService) adresseService.findById(id);
+    public AdresseEntity readById(@PathVariable int id){
+        return adresseService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody AdresseEntity adresse){
-        adresseService.add(adresse);
+    public AdresseEntity add(@RequestBody AdresseEntity adresse){
+        System.out.println("1");
+        AdresseEntity address = adresseService.addAdresse(adresse);
+        System.out.println("2");
+        System.out.println(address);
+        return address;
     }
 
     @PutMapping("/update")
