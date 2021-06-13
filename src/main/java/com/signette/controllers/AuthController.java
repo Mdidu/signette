@@ -85,6 +85,7 @@ public class AuthController {
         }
 
         // Create new user's account
+
         // TODO ADD DATA du USER
         User user = new User(
                 signUpRequest.getUserDateOfBirth(),
