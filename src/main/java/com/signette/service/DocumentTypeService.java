@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.DocumentTypeEntity;
+import com.signette.domains.DocumentType;
 
-public interface DocumentTypeService extends GlobalService<DocumentTypeEntity> {
+public interface DocumentTypeService extends GlobalService<DocumentType> {
 }

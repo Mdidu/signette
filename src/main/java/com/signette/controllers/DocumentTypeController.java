@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.DocumentTypeEntity;
+import com.signette.domains.DocumentType;
 import com.signette.service.DocumentTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,27 +16,28 @@ public class DocumentTypeController {
     DocumentTypeService documentTypeService;
 
     @GetMapping("/read")
-    public List<DocumentTypeEntity> read() {
+    public List<DocumentType> read() {
         return documentTypeService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public DocumentTypeEntity readById(@PathVariable int id) {
+    public DocumentType readById(@PathVariable long id) {
         return documentTypeService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody DocumentTypeEntity documentTypeEntity) {
-        documentTypeService.add(documentTypeEntity);
+    public void add(@RequestBody DocumentType documentType) {
+        documentTypeService.add(documentType);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody DocumentTypeEntity documentTypeEntity) {
-        documentTypeService.update(documentTypeEntity);
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody DocumentType documentType) {
+        documentType.setDocumenttypeId(id);
+        documentTypeService.update(documentType);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@PathVariable int id) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id) {
         documentTypeService.delete(documentTypeService.findById(id));
     }
 }

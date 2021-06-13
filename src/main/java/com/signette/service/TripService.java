@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.TripEntity;
+import com.signette.domains.Trip;
 
-public interface TripService extends GlobalService<TripEntity>{
+public interface TripService extends GlobalService<Trip>{
 }

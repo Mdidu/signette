@@ -22,9 +22,9 @@ public class SignupRequest {
 
     private String userUsername;
 
-    private int addressId;
+    private long addressId;
 
-    private int roleId;
+    private long roleId;
 
     public String getMail() {
         return mail;
@@ -42,19 +42,19 @@ public class SignupRequest {
         this.password = password;
     }
 
-    public int getAddressId() {
+    public long getAddressId() {
         return addressId;
     }
 
-    public void setAddressId(int addressId) {
+    public void setAddressId(long addressId) {
         this.addressId = addressId;
     }
 
-    public int getRoleId() {
+    public long getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(int roleId) {
+    public void setRoleId(long roleId) {
         this.roleId = roleId;
     }
 

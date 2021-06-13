@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.UserEntity;
+import com.signette.domains.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,20 +10,20 @@ import java.util.Collection;
 
 public class UserDetailsImpl implements UserDetails {
 
-    private int id;
+    private long id;
     private String mail;
     private String password;
     private GrantedAuthority authorities;
 
-    public UserDetailsImpl(int id, String mail, String password, GrantedAuthority authorities) {
+    public UserDetailsImpl(long id, String mail, String password, GrantedAuthority authorities) {
         this.id = id;
         this.mail = mail;
         this.password = password;
         this.authorities = authorities;
     }
 
-    public static UserDetailsImpl build(UserEntity user) {
-        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRoleByUserFkRoleId().getRoleType().name());
+    public static UserDetailsImpl build(User user) {
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().getRoleType().name());
         return new UserDetailsImpl(
                 user.getUserId(),
                 user.getUserMail(),
@@ -39,7 +39,7 @@ public class UserDetailsImpl implements UserDetails {
         return authority;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

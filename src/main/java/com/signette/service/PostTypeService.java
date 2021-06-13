@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.PostTypeEntity;
+import com.signette.domains.PostType;
 
-public interface PostTypeService extends GlobalService<PostTypeEntity> {
+public interface PostTypeService extends GlobalService<PostType> {
 }

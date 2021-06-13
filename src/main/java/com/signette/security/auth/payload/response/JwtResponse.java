@@ -8,11 +8,11 @@ public class JwtResponse {
 
     private String token;
     private String type = "Bearer";
-    private int id;
+    private long id;
     private String email;
     private Collection<? extends GrantedAuthority> roles;
 
-    public JwtResponse(String accessToken, int id, String email,
+    public JwtResponse(String accessToken, long id, String email,
                        Collection<? extends GrantedAuthority> roles) {
         this.token = accessToken;
         this.id = id;
@@ -36,11 +36,11 @@ public class JwtResponse {
         this.type = tokenType;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

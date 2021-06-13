@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.TripEntity;
+import com.signette.domains.Trip;
 import com.signette.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,27 @@ public class TripServiceImpl implements TripService{
     TripRepository tripRepository;
 
     @Override
-    public void add(TripEntity trip) {
+    public void add(Trip trip) {
         tripRepository.save(trip);
     }
 
     @Override
-    public void delete(TripEntity trip) {
+    public void delete(Trip trip) {
         tripRepository.delete(trip);
     }
 
     @Override
-    public void update(TripEntity trip) {
+    public void update(Trip trip) {
         tripRepository.save(trip);
     }
 
     @Override
-    public List<TripEntity> findAll() {
+    public List<Trip> findAll() {
         return tripRepository.findAll();
     }
 
     @Override
-    public TripEntity findById(int id) {
+    public Trip findById(long id) {
         return tripRepository.findById(id).get();
     }
 }

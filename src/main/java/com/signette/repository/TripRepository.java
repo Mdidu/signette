@@ -1,7 +1,7 @@
 package com.signette.repository;
 
-import com.signette.domains.TripEntity;
+import com.signette.domains.Trip;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface TripRepository extends JpaRepository<TripEntity,Integer> {
+public interface TripRepository extends JpaRepository<Trip,Long> {
 }

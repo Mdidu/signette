@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.UserEntity;
+import com.signette.domains.User;
 import com.signette.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,33 +17,33 @@ public class UserServiceImpl implements UserService{
     UserRepository userRepository;
 
     @Override
-    public void add(UserEntity user) {
+    public void add(User user) {
         System.out.println(user);
         userRepository.save(user);
     }
 
     @Override
-    public void delete(UserEntity user) {
+    public void delete(User user) {
         userRepository.delete(user);
     }
 
     @Override
-    public void update(UserEntity user) {
+    public void update(User user) {
         userRepository.save(user);
     }
 
     @Override
-    public List<UserEntity> findAll() {
+    public List<User> findAll() {
         return userRepository.findAll();
     }
 
     @Override
-    public UserEntity findById(int id) {
+    public User findById(long id) {
         return userRepository.findById(id).get();
     }
 
     @Override
-    public Optional<UserEntity> findByUserMail(String mail) {
+    public Optional<User> findByUserMail(String mail) {
         return userRepository.findByUserMail(mail);
     }
 

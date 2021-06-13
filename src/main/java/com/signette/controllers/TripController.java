@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.TripEntity;
+import com.signette.domains.Trip;
 import com.signette.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,27 +16,28 @@ public class TripController {
     TripService tripService;
 
     @GetMapping("/read")
-    public List<TripEntity> read() {
+    public List<Trip> read() {
         return tripService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public TripEntity readById(@PathVariable int id) {
+    public Trip readById(@PathVariable long id) {
         return tripService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody TripEntity tripEntity) {
-        tripService.add(tripEntity);
+    public void add(@RequestBody Trip trip) {
+        tripService.add(trip);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody TripEntity tripEntity) {
-        tripService.update(tripEntity);
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody Trip trip) {
+        trip.setTripId(id);
+        tripService.update(trip);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@PathVariable int id) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id) {
         tripService.delete(tripService.findById(id));
     }
 }
