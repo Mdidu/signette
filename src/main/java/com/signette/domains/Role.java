@@ -20,6 +20,7 @@ public class Role implements Serializable {
 	@Column(name="ROLE_ID")
 	private long roleId;
 
+	@Enumerated(EnumType.STRING)
 	@Column(name="ROLE_TYPE", nullable=false)
 	private ERole roleType;
 
