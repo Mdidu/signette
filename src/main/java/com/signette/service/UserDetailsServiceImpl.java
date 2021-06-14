@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.UserEntity;
+import com.signette.domains.User;
 import com.signette.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +14,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-        UserEntity user = userRepository.findByUserMail(mail)
+        User user = userRepository.findByUserMail(mail)
                 .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + mail));
 
         return UserDetailsImpl.build(user);

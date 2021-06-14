@@ -1,7 +1,7 @@
 package com.signette.service;
 
 import com.signette.domains.ERole;
-import com.signette.domains.RoleEntity;
+import com.signette.domains.Role;
 import com.signette.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,32 +18,32 @@ public class RoleServiceImpl implements RoleService{
     RoleRepository roleRepository;
 
     @Override
-    public void add(RoleEntity role) {
+    public void add(Role role) {
         roleRepository.save(role);
     }
 
     @Override
-    public void delete(RoleEntity role) {
+    public void delete(Role role) {
         roleRepository.delete(role);
     }
 
     @Override
-    public void update(RoleEntity role) {
+    public void update(Role role) {
         roleRepository.save(role);
     }
 
     @Override
-    public List<RoleEntity> findAll() {
+    public List<Role> findAll() {
         return roleRepository.findAll();
     }
 
     @Override
-    public RoleEntity findById(int id) {
+    public Role findById(long id) {
         return roleRepository.findById(id).get();
     }
 
     @Override
-    public Optional<RoleEntity> findByRoleType(ERole name) {
+    public Optional<Role> findByRoleType(ERole name) {
         return roleRepository.findByRoleType(name);
     }
 }

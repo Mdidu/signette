@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.ClientEntity;
+import com.signette.domains.Client;
 import com.signette.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,27 @@ public class ClientServiceImpl implements ClientService {
     ClientRepository clientRepository;
 
     @Override
-    public void add(ClientEntity client) {
+    public void add(Client client) {
         clientRepository.save(client);
     }
 
     @Override
-    public void delete(ClientEntity client) {
+    public void delete(Client client) {
         clientRepository.delete(client);
     }
 
     @Override
-    public void update(ClientEntity client) {
+    public void update(Client client) {
         clientRepository.save(client);
     }
 
     @Override
-    public List<ClientEntity> findAll() {
+    public List<Client> findAll() {
         return clientRepository.findAll();
     }
 
     @Override
-    public ClientEntity findById(int id) {
+    public Client findById(long id) {
         return clientRepository.findById(id).get();
     }
 }

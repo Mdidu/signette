@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.CenterEntity;
+import com.signette.domains.Center;
 import com.signette.service.CenterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,27 +16,28 @@ public class CenterController {
     CenterService centerService;
 
     @GetMapping("/read")
-    public List<CenterEntity> read() {
+    public List<Center> read() {
         return centerService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public CenterEntity readById(@PathVariable int id) {
+    public Center readById(@PathVariable long id) {
         return centerService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody CenterEntity centerEntity) {
-        centerService.add(centerEntity);
+    public void add(@RequestBody Center center) {
+        centerService.add(center);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody CenterEntity centerEntity) {
-        centerService.update(centerEntity);
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody Center center) {
+        center.setCenterId(id);
+        centerService.update(center);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@PathVariable int id) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id) {
         centerService.delete(centerService.findById(id));
     }
 }

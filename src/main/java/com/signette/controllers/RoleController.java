@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.RoleEntity;
+import com.signette.domains.Role;
 import com.signette.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,28 +16,29 @@ public class RoleController {
     RoleService roleService;
 
     @GetMapping("/read")
-    public List<RoleEntity> read(){
+    public List<Role> read(){
         return roleService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public RoleEntity readById(@PathVariable int id){
+    public Role readById(@PathVariable long id){
         return roleService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody RoleEntity role){
+    public void add(@RequestBody Role role){
         roleService.add(role);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody RoleEntity role){
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody Role role){
+        role.setRoleId(id);
         roleService.update(role);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id){
-        RoleEntity role = roleService.findById(id);
+    public void delete(@PathVariable long id){
+        Role role = roleService.findById(id);
         roleService.delete(role);
     }
 }

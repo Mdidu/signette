@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.CenterEntity;
+import com.signette.domains.Center;
 import com.signette.repository.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,28 @@ public class CenterServiceImpl implements CenterService {
     CenterRepository centerRepository;
 
     @Override
-    public void add(CenterEntity center) {
+    public void add(Center center) {
         centerRepository.save(center);
     }
 
     @Override
-    public void delete(CenterEntity center) {
+    public void delete(Center center) {
         centerRepository.delete(center);
     }
 
     @Override
-    public void update(CenterEntity center) {
+    public void update(Center center) {
         centerRepository.save(center);
     }
 
     @Override
-    public List<CenterEntity> findAll() {
+    public List<Center> findAll() {
         return centerRepository.findAll();
     }
 
     @Override
-    public CenterEntity findById(int id) {
+    public Center findById(long id) {
         return centerRepository.findById(id).get();
     }
+
 }

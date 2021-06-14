@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.UserEntity;
+import com.signette.domains.User;
 import com.signette.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,28 +16,29 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/read")
-    public List<UserEntity> read(){
+    public List<User> read(){
         return userService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public UserEntity readById(@PathVariable int id){
+    public User readById(@PathVariable long id){
         return userService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody UserEntity user){
+    public void add(@RequestBody User user){
         userService.add(user);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody UserEntity user){
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody User user){
+        user.setUserId(id);
         userService.update(user);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable int id){
-        UserEntity user = userService.findById(id);
+    public void delete(@PathVariable long id){
+        User user = userService.findById(id);
         userService.delete(user);
     }
 

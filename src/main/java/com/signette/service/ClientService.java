@@ -1,7 +1,7 @@
 package com.signette.service;
 
-import com.signette.domains.ClientEntity;
+import com.signette.domains.Client;
 
-public interface ClientService extends GlobalService<ClientEntity> {
+public interface ClientService extends GlobalService<Client> {
 
 }

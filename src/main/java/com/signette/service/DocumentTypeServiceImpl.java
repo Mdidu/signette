@@ -1,6 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.DocumentTypeEntity;
+import com.signette.domains.DocumentType;
 import com.signette.repository.DocumentTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,27 @@ public class DocumentTypeServiceImpl implements DocumentTypeService {
     DocumentTypeRepository documentTypeRepository;
 
     @Override
-    public void add(DocumentTypeEntity documentType) {
+    public void add(DocumentType documentType) {
         documentTypeRepository.save(documentType);
     }
 
     @Override
-    public void delete(DocumentTypeEntity documentTypeEntity) {
+    public void delete(DocumentType documentTypeEntity) {
         documentTypeRepository.delete(documentTypeEntity);
     }
 
     @Override
-    public void update(DocumentTypeEntity documentTypeEntity) {
+    public void update(DocumentType documentTypeEntity) {
         documentTypeRepository.save(documentTypeEntity);
     }
 
     @Override
-    public List<DocumentTypeEntity> findAll() {
+    public List<DocumentType> findAll() {
         return documentTypeRepository.findAll();
     }
 
     @Override
-    public DocumentTypeEntity findById(int id) {
+    public DocumentType findById(long id) {
         return documentTypeRepository.findById(id).get();
     }
 }

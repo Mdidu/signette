@@ -1,6 +1,6 @@
 package com.signette.controllers;
 
-import com.signette.domains.PostTypeEntity;
+import com.signette.domains.PostType;
 import com.signette.service.PostTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +13,28 @@ public class PostTypeController {
     PostTypeService postTypeService;
 
     @GetMapping("/read")
-    public List<PostTypeEntity> read() {
+    public List<PostType> read() {
         return postTypeService.findAll();
     }
 
     @GetMapping("/read/{id}")
-    public PostTypeEntity readById(@PathVariable int id) {
+    public PostType readById(@PathVariable long id) {
         return postTypeService.findById(id);
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody PostTypeEntity postTypeEntity) {
-        postTypeService.add(postTypeEntity);
+    public void add(@RequestBody PostType postType) {
+        postTypeService.add(postType);
     }
 
-    @PutMapping("/update")
-    public void update(@RequestBody PostTypeEntity postTypeEntity) {
-        postTypeService.update(postTypeEntity);
+    @PutMapping("/update/{id}")
+    public void update(@PathVariable long id, @RequestBody PostType postType) {
+        postType.setPostId(id);
+        postTypeService.update(postType);
     }
 
-    @DeleteMapping("/delete")
-    public void delete(@PathVariable int id) {
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable long id) {
         postTypeService.delete(postTypeService.findById(id));
     }
 }

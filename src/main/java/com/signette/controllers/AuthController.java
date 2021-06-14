@@ -4,16 +4,16 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
-import com.signette.domains.AdresseEntity;
+import com.signette.domains.Address;
 import com.signette.domains.ERole;
-import com.signette.domains.RoleEntity;
-import com.signette.domains.UserEntity;
+import com.signette.domains.Role;
+import com.signette.domains.User;
 import com.signette.security.auth.jwt.JwtUtils;
 import com.signette.security.auth.payload.request.LoginRequest;
 import com.signette.security.auth.payload.request.SignupRequest;
 import com.signette.security.auth.payload.response.JwtResponse;
 import com.signette.security.auth.payload.response.MessageResponse;
-import com.signette.service.AdresseService;
+import com.signette.service.AddressService;
 import com.signette.service.RoleService;
 import com.signette.service.UserDetailsImpl;
 import com.signette.service.UserService;
@@ -47,7 +47,7 @@ public class AuthController {
     RoleService roleService;
 
     @Autowired
-    AdresseService adresseService;
+    AddressService addressService;
 
     @Autowired
     PasswordEncoder encoder;
@@ -85,7 +85,9 @@ public class AuthController {
         }
 
         // Create new user's account
-        UserEntity user = new UserEntity(
+
+        // TODO ADD DATA du USER
+        User user = new User(
                 signUpRequest.getUserDateOfBirth(),
                 signUpRequest.getUserEntryDate(),
                 signUpRequest.getUserLastname(),
@@ -97,11 +99,11 @@ public class AuthController {
                 signUpRequest.getUserUsername()
         );
 
-        int idRoles = signUpRequest.getRoleId();
-        RoleEntity roles = new RoleEntity();
+        long idRoles = signUpRequest.getRoleId();
+        Role roles = new Role();
 
-        int idAdress = signUpRequest.getAddressId();
-        AdresseEntity address = adresseService.findById(idAdress);
+        long idAddress = signUpRequest.getAddressId();
+        Address address = addressService.findById(idAddress);
 
         if (idRoles == 2) {
             roles = roleService.findByRoleType(ERole.ROLE_ADMIN)
@@ -114,8 +116,8 @@ public class AuthController {
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
         }
 
-        user.setRoleByUserFkRoleId(roles);
-        user.setAdresseByUserFkAddressId(address);
+        user.setRole(roles);
+        user.setAddress(address);
         userService.add(user);
 
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
