@@ -26,8 +26,9 @@ public class AdresseController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody Address adresse){
-        addressService.add(adresse);
+    public Address add(@RequestBody Address adresse){
+        Address address = addressService.addAdresse(adresse);
+        return address;
     }
 
     @PutMapping("/update/{id}")
