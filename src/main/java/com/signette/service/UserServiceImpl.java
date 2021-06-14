@@ -50,4 +50,9 @@ public class UserServiceImpl implements UserService {
     public boolean existsByUserMail(String mail) {
         return userRepository.existsByUserMail(mail);
     }
+
+    @Override
+    public List<User> findByUserLastname(String lastname) {
+        return userRepository.findByUserLastname(lastname);
+    }
 }
