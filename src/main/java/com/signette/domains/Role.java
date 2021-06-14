@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -25,7 +27,8 @@ public class Role implements Serializable {
 	private ERole roleType;
 
 	//bi-directional many-to-one association to Employee
-	@OneToMany(mappedBy="role", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="role", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<User> users;
 
 	public Role() {
