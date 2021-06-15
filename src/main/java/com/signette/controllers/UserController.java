@@ -33,17 +33,15 @@ public class UserController {
         userService.add(user);
     }
 
-    @PutMapping("/update/{id}")
-    public void update(@PathVariable long id, @RequestBody User user){
-        user.setUserId(id);
+    @PutMapping("/update")
+    public void update(@RequestBody User user) {
+        System.out.println(user);
         userService.update(user);
     }
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable long id){
+    public void delete(@PathVariable long id) {
         User user = userService.findById(id);
         userService.delete(user);
     }
-
-
 }

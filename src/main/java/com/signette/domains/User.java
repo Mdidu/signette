@@ -205,4 +205,23 @@ public class User implements Serializable {
 		this.trips = trips;
 	}
 
+	@Override
+	public String toString() {
+		return "User{" +
+				"userId=" + userId +
+				", userDateOfBirth=" + userDateOfBirth +
+				", userEntryDate=" + userEntryDate +
+				", userLastname='" + userLastname + '\'' +
+				", userMail='" + userMail + '\'' +
+				", nameUser='" + nameUser + '\'' +
+				", userNss=" + userNss +
+				", userPassword='" + userPassword + '\'' +
+				", userPhone='" + userPhone + '\'' +
+				", userUsername='" + userUsername + '\'' +
+				", documents=" + documents +
+				", address=" + address +
+				", role=" + role +
+				", trips=" + trips +
+				'}';
+	}
 }
