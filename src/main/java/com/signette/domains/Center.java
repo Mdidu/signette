@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -24,16 +26,16 @@ public class Center implements Serializable {
 	@Column(name="CENTER_COMMENT")
 	private String centerComment;
 
-	@Column(name="CENTER_MAIL", nullable=false, length=20)
+	@Column(name="CENTER_MAIL", nullable=false, length=30)
 	private String centerMail;
 
-	@Column(name="CENTER_NAME", nullable=false, length=20)
+	@Column(name="CENTER_NAME", nullable=false, length=50)
 	private String centerName;
 
 	@Column(name="CENTER_PHONE", length=14)
 	private String centerPhone;
 
-	@Column(name="CENTER_PICTURE", length=100)
+	@Column(name="CENTER_PICTURE", length=250)
 	private String centerPicture;
 
 	//bi-directional one-to-one association to Address
@@ -42,7 +44,8 @@ public class Center implements Serializable {
 	private Address address;
 
 	//bi-directional many-to-one association to Trip
-	@OneToMany(mappedBy="center")
+	@OneToMany(mappedBy="center",fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<Trip> trips;
 
 	public Center() {

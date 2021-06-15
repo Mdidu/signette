@@ -35,7 +35,7 @@ public class Address implements Serializable {
 	private String addressStreet;
 
 	//bi-directional one-to-one association to Center
-	@OneToOne(mappedBy="address", fetch = FetchType.LAZY)
+	@OneToOne(mappedBy="address",fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Center center;
 
@@ -120,6 +120,14 @@ public class Address implements Serializable {
 		user.setAddress(null);
 
 		return user;
+	}
+
+	public Center getCenter() {
+		return center;
+	}
+
+	public void setCenter(Center center) {
+		this.center = center;
 	}
 
 }
