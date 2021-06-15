@@ -1,12 +1,14 @@
 package com.signette.service;
 
 import com.signette.domains.Center;
+import com.signette.domains.Post;
 import com.signette.repository.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,7 +38,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Center findById(long id) {
+    public Optional<Post> findById(Long id) {
         return centerRepository.findById(id).get();
     }
 

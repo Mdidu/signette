@@ -1,12 +1,14 @@
 package com.signette.service;
 
 import com.signette.domains.Address;
+import com.signette.domains.Post;
 import com.signette.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -42,7 +44,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address findById(long id) {
+    public Optional<Post> findById(Long id) {
         return addressRepository.findById(id).get();
     }
 }

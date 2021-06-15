@@ -1,6 +1,7 @@
 package com.signette.service;
 
 import com.signette.domains.ERole;
+import com.signette.domains.Post;
 import com.signette.domains.Role;
 import com.signette.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,12 @@ public class RoleServiceImpl implements RoleService{
     }
 
     @Override
-    public Role findById(long id) {
-        return roleRepository.findById(id).get();
+    public Role findById(Long id) {
+        return  roleRepository.getOne(id);
     }
 
     @Override
-    public Optional<Role> findByRoleType(ERole name) {
+    public Role findByRoleType(ERole name) {
         return roleRepository.findByRoleType(name);
     }
 }

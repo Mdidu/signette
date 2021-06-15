@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Post;
 import com.signette.domains.User;
 import com.signette.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(long id) {
+    public Optional<Post> findById(Long id) {
         return userRepository.findById(id).get();
     }
 

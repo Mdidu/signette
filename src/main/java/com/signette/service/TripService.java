@@ -2,5 +2,5 @@ package com.signette.service;
 
 import com.signette.domains.Trip;
 
-public interface TripService extends GlobalService<Trip>{
+public interface TripService extends GlobalService<Trip, Long>{
 }

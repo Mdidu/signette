@@ -1,12 +1,14 @@
 package com.signette.service;
 
 import com.signette.domains.Client;
+import com.signette.domains.Post;
 import com.signette.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,7 +38,7 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Client findById(long id) {
+    public Optional<Post> findById(Long id) {
         return clientRepository.findById(id).get();
     }
 }

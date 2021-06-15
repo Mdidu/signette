@@ -1,14 +1,14 @@
 package com.signette.service;
 
 import com.signette.domains.Post;
-import com.signette.domains.PostType;
+import com.signette.domains.PostPK;
 import com.signette.repository.PostRepository;
-import com.signette.repository.PostTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -37,10 +37,10 @@ public class PostServiceImpl implements PostService{
         return postRepository.findAll();
     }
 
-    //inutiliser
+
     @Override
-    public Post findById(long id) {
-        return null;
+    public Optional<Post> findById(PostPK postPK) {
+        return postRepository.findById(postPK);
     }
 
     @Override

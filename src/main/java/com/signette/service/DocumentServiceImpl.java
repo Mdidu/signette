@@ -1,12 +1,14 @@
 package com.signette.service;
 
 import com.signette.domains.Document;
+import com.signette.domains.Post;
 import com.signette.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,7 +38,7 @@ public class DocumentServiceImpl implements DocumentService{
     }
 
     @Override
-    public Document findById(long id) {
+    public Optional<Post> findById(Long id) {
         return documentRepository.findById(id).get();
     }
 }

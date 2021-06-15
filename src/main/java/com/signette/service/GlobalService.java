@@ -1,8 +1,11 @@
 package com.signette.service;
 
-import java.util.List;
+import com.signette.domains.Post;
 
-public interface GlobalService<T> {
+import java.util.List;
+import java.util.Optional;
+
+public interface GlobalService<T,I> {
     void add(T type);
 
     void delete(T type);
@@ -11,5 +14,5 @@ public interface GlobalService<T> {
 
     List<T> findAll();
 
-    T findById(long id);
+    T findById(I id);
 }

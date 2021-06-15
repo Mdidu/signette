@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Post;
 import com.signette.domains.Trip;
 import com.signette.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -36,7 +38,7 @@ public class TripServiceImpl implements TripService{
     }
 
     @Override
-    public Trip findById(long id) {
+    public Optional<Post> findById(Long id) {
         return tripRepository.findById(id).get();
     }
 }
