@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -33,15 +35,18 @@ public class Address implements Serializable {
 	private String addressStreet;
 
 	//bi-directional one-to-one association to Center
-	@OneToOne(mappedBy="address")
+	@OneToOne(mappedBy="address",fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Center center;
 
 	//bi-directional one-to-one association to Client
-	@OneToOne(mappedBy="address")
+	@OneToOne(mappedBy="address",fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Client client;
 
 	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="address")
+	@OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+	@JsonIgnore
 	private List<User> users;
 
 	public Address() {
@@ -115,6 +120,14 @@ public class Address implements Serializable {
 		user.setAddress(null);
 
 		return user;
+	}
+
+	public Center getCenter() {
+		return center;
+	}
+
+	public void setCenter(Center center) {
+		this.center = center;
 	}
 
 }
