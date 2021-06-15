@@ -25,6 +25,11 @@ public class CenterController {
         return centerService.findById(id);
     }
 
+    @GetMapping("/read/search/{centerName}")
+    public List<Center> readByName(@PathVariable String centerName) {
+        return centerService.findByCenterName(centerName);
+    }
+
     @PostMapping("/add")
     public void add(@RequestBody Center center) {
         centerService.add(center);

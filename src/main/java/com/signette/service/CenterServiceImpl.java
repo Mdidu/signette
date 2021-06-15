@@ -40,4 +40,6 @@ public class CenterServiceImpl implements CenterService {
         return centerRepository.findById(id).get();
     }
 
+    @Override
+    public List<Center> findByCenterName(String centerName) { return centerRepository.findByCenterNameContaining(centerName); }
 }
