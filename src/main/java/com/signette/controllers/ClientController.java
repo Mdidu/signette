@@ -25,14 +25,20 @@ public class ClientController {
         return clientService.findById(id);
     }
 
+    @GetMapping("read/name/{name}")
+    public List<Client> readByName(@PathVariable String name){
+        System.out.println(name);
+        return clientService.findClientByClientWording(name);
+    }
+
     @PostMapping("/add")
     public void add(@RequestBody Client client){
         clientService.add(client);
     }
 
-    @PutMapping("/update/{id}")
-    public void update(@PathVariable long id, @RequestBody Client client){
-        client.setClientId(id);
+    @PutMapping("/update")
+    public void update(@RequestBody Client client){
+        System.out.println(client.toString());
         clientService.update(client);
     }
 
