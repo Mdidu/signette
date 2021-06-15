@@ -40,12 +40,12 @@ public class Address implements Serializable {
 	private Center center;
 
 	//bi-directional one-to-one association to Client
-	@OneToOne(mappedBy="address",fetch = FetchType.LAZY)
+	@OneToOne(mappedBy="address", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private Client client;
 
 	//bi-directional many-to-one association to User
-	@OneToMany(mappedBy="address",fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="address", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<User> users;
 

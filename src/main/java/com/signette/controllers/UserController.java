@@ -25,6 +25,9 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @GetMapping("/read/lastname/{lastname}")
+    public List<User> readByLastName(@PathVariable String lastname) { return userService.findByUserLastname(lastname); }
+
     @PostMapping("/add")
     public void add(@RequestBody User user){
         userService.add(user);
