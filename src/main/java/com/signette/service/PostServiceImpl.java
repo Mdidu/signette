@@ -48,6 +48,7 @@ public class PostServiceImpl implements PostService {
     public List<Object[]> findByTripByCenter(long id) {
         List<Object[]> test = postRepository.findByTripByCenter(id);
         return test;
+    }
 
     public List<Post> findByTripId(long id) {
         return postRepository.findById_TripId(id);
