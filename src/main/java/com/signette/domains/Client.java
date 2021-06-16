@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -34,8 +36,10 @@ public class Client implements Serializable {
 	@JoinColumn(name="ADDRESS_ID", nullable=false)
 	private Address address;
 
+
 	//bi-directional many-to-one association to Trip
 	@OneToMany(mappedBy="client")
+	@JsonIgnore
 	private List<Trip> trips;
 
 	public Client() {

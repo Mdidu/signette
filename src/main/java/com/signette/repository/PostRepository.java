@@ -1,7 +1,6 @@
 package com.signette.repository;
 import com.signette.domains.Post;
 import com.signette.domains.PostPK;
-import com.signette.domains.Trip;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

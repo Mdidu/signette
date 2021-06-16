@@ -1,13 +1,11 @@
 package com.signette.service;
 
 import com.signette.domains.Post;
-import com.signette.domains.PostType;
 import com.signette.repository.PostRepository;
-import com.signette.repository.PostTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
