@@ -1,5 +1,6 @@
 package com.signette.domains;
 
+
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,7 +42,9 @@ public class Client implements Serializable {
 	@JoinColumn(name="ADDRESS_ID", nullable=false)
 	private Address address;
 
+
 	//bi-directional many-to-one association to Trip
+
 	@OneToMany(mappedBy="client", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Trip> trips;

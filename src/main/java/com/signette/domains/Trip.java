@@ -1,9 +1,12 @@
 package com.signette.domains;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.signette.domains.Center;
 import com.signette.domains.Client;
 import com.signette.domains.Document;
 import com.signette.domains.User;
+
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -27,27 +30,31 @@ public class Trip implements Serializable {
 	@Column(name="TRIP_ID")
 	private long tripId;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="TRIP_END_DATE")
 	private Date tripEndDate;
 
+	@Temporal(TemporalType.DATE)
 	@Column(name="TRIP_START_DATE")
 	private Date tripStartDate;
 
 	//bi-directional many-to-one association to Document
-	@OneToMany(mappedBy="trip", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="trip")
+	@JsonIgnore
 	private List<Document> documents;
 
 	//bi-directional many-to-many association to Employee
 	@ManyToMany(mappedBy="trips")
+	@JsonIgnore
 	private List<User> users;
 
 	//bi-directional many-to-one association to Center
-	@ManyToOne
+	@ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn(name="CENTER_ID", nullable=false)
 	private Center center;
 
 	//bi-directional many-to-one association to Client
-	@ManyToOne
+	@ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn(name="CLIENT_ID", nullable=false)
 	private Client client;
 
