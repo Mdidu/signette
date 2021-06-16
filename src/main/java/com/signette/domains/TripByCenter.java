@@ -8,7 +8,7 @@ public class TripByCenter implements Serializable {
     private BigInteger nbTrip;
     private String centerName;
     private String nameUser;
-    private String userLasname;
+    private String userLastname;
 
     public BigInteger getNbTrip() {
         return nbTrip;
@@ -34,11 +34,11 @@ public class TripByCenter implements Serializable {
         this.nameUser = nameUser;
     }
 
-    public String getUserLasname() {
-        return userLasname;
+    public String getUserLastname() {
+        return userLastname;
     }
 
-    public void setUserLasname(String userLasname) {
-        this.userLasname = userLasname;
+    public void setUserLastname(String userLasname) {
+        this.userLastname = userLasname;
     }
 }

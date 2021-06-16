@@ -66,7 +66,7 @@ public class PostController {
             TripByCenter trip = new TripByCenter();
             trip.setNbTrip((BigInteger) obj[0]);
             trip.setCenterName((String) obj[1]);
-            trip.setUserLasname((String) obj[2]);
+            trip.setUserLastname((String) obj[2]);
             trip.setNameUser((String) obj[3]);
             listTripByCenters.add(trip);
         }
