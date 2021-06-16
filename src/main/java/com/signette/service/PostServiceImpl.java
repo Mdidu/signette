@@ -1,7 +1,10 @@
 package com.signette.service;
 
+import com.signette.domains.Post;
 import com.signette.domains.PostPK;
+import com.signette.domains.PostType;
 import com.signette.repository.PostRepository;
+import com.signette.repository.PostTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,27 +19,28 @@ public class PostServiceImpl implements PostService {
     PostRepository postRepository;
 
     @Override
-    public void add(PostPK type) {
-
+    public void add(Post post) {
+        postRepository.save(post);
     }
 
     @Override
-    public void delete(PostPK type) {
-
+    public void delete(Post post) {
+        postRepository.delete(post);
     }
 
     @Override
-    public void update(PostPK type) {
-
+    public void update(Post post) {
+        postRepository.save(post);
     }
 
     @Override
-    public List<PostPK> findAll() {
-        return null;
+    public List<Post> findAll() {
+        return postRepository.findAll();
     }
 
+    //inutiliser
     @Override
-    public PostPK findById(long id) {
+    public Post findById(long id) {
         return null;
     }
 
@@ -44,5 +48,18 @@ public class PostServiceImpl implements PostService {
     public List<Object[]> findByTripByCenter(long id) {
         List<Object[]> test = postRepository.findByTripByCenter(id);
         return test;
+
+    public List<Post> findByTripId(long id) {
+        return postRepository.findById_TripId(id);
+    }
+
+    @Override
+    public List<Post> findByUserId(long userid) {
+        return postRepository.findById_UserId(userid);
+    }
+
+    @Override
+    public Post findByTripIdAndUserId(long tripId, long userId) {
+        return postRepository.findById_TripIdAndId_UserId(tripId, userId);
     }
 }

@@ -30,8 +30,9 @@ public class Post implements Serializable {
 		return this.id;
 	}
 
-	public void setId(PostPK id) {
+	public PostPK setId(PostPK id) {
 		this.id = id;
+		return id;
 	}
 
 	public PostType getPosttype() {

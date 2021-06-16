@@ -17,6 +17,11 @@ public class PostPK implements Serializable {
 	@Column(name="USER_ID", insertable=false, updatable=false)
 	private long userId;
 
+	public PostPK(long tripId,long userId) {
+		this.userId = userId;
+		this.tripId = tripId;
+	}
+
 	public PostPK() {
 	}
 	public long getTripId() {
