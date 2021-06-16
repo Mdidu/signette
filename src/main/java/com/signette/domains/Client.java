@@ -46,7 +46,12 @@ public class Client implements Serializable {
 	@JsonIgnore
 	private List<Trip> trips;
 
-	public Client() {
+	public Client(){
+
+	}
+
+	public Client(long id) {
+		this.clientId = id;
 	}
 
 	public long getClientId() {
