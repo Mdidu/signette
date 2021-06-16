@@ -39,4 +39,9 @@ public class ClientServiceImpl implements ClientService {
     public Client findById(long id) {
         return clientRepository.findById(id).get();
     }
+
+    @Override
+    public List<Client> findClientByClientWording(String name) {
+        return clientRepository.findClientByClientWording(name);
+    }
 }

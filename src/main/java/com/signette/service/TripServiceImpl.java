@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Client;
 import com.signette.domains.Trip;
 import com.signette.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,11 @@ public class TripServiceImpl implements TripService{
     @Override
     public Trip findById(long id) {
         return tripRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Trip> findTripByClient(Long id) {
+        System.out.println(new Client(id));
+        return tripRepository.findTripByClient(new Client(id));
     }
 }
