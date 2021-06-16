@@ -1,7 +1,6 @@
 package com.signette.service;
 
 import com.signette.domains.Post;
-import com.signette.domains.PostPK;
 
 import java.util.List;
 
