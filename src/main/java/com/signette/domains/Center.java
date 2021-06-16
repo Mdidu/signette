@@ -1,6 +1,7 @@
 package com.signette.domains;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Type;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Center implements Serializable {
 	private long centerId;
 
 	@Lob
+	@Type(type = "org.hibernate.type.TextType")
 	@Column(name="CENTER_COMMENT")
 	private String centerComment;
 

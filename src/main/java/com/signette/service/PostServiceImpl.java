@@ -1,6 +1,8 @@
 package com.signette.service;
 
 import com.signette.domains.Post;
+import com.signette.domains.PostPK;
+import com.signette.domains.PostType;
 import com.signette.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +12,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class PostServiceImpl implements PostService{
+public class PostServiceImpl implements PostService {
 
     @Autowired
     PostRepository postRepository;
@@ -42,6 +44,11 @@ public class PostServiceImpl implements PostService{
     }
 
     @Override
+    public List<Object[]> findByTripByCenter(long id) {
+        List<Object[]> test = postRepository.findByTripByCenter(id);
+        return test;
+    }
+
     public List<Post> findByTripId(long id) {
         return postRepository.findById_TripId(id);
     }

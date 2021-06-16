@@ -1,6 +1,10 @@
 package com.signette.domains;
 
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -33,16 +37,24 @@ public class Client implements Serializable {
 
 	//bi-directional one-to-one association to Address
 	@OneToOne
+	//@JsonIdentityInfo(generator= ObjectIdGenerators.PropertyGenerator.class, property="addressId")
+	//@JsonIdentityReference(alwaysAsId=true)
 	@JoinColumn(name="ADDRESS_ID", nullable=false)
 	private Address address;
 
 
 	//bi-directional many-to-one association to Trip
-	@OneToMany(mappedBy="client")
+
+	@OneToMany(mappedBy="client", fetch = FetchType.LAZY)
 	@JsonIgnore
 	private List<Trip> trips;
 
-	public Client() {
+	public Client(){
+
+	}
+
+	public Client(long id) {
+		this.clientId = id;
 	}
 
 	public long getClientId() {
