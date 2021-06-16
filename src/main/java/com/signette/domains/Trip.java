@@ -1,5 +1,10 @@
 package com.signette.domains;
 
+import com.signette.domains.Center;
+import com.signette.domains.Client;
+import com.signette.domains.Document;
+import com.signette.domains.User;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.math.BigDecimal;
