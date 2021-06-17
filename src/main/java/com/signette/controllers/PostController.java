@@ -1,11 +1,7 @@
 package com.signette.controllers;
 
-import com.signette.domains.Post;
-import com.signette.domains.PostPK;
-import com.signette.domains.PostType;
-import com.signette.domains.TripByCenter;
+import com.signette.domains.*;
 import com.signette.service.PostService;
-import com.signette.service.PostTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,9 +27,23 @@ public class PostController {
         return postService.findByTripIdAndUserId(tripId, userId);
     }
 
-    @GetMapping("/read/trip/{tripId}")
-    public List<Post> readByTrip(@PathVariable long tripId) {
-        return postService.findByTripId(tripId);
+    @GetMapping("/readBytrip/{tripId}")
+    public List<PostByUser> readByTrip(@PathVariable long tripId) {
+        List<Object[]> objects = postService.findByTripId(tripId);
+        List<PostByUser> postByUsers = new ArrayList<>();
+
+        objects.forEach((obj) -> {
+            PostByUser post = new PostByUser();
+            post.setTripId((BigInteger) obj[0]);
+            post.setUserId((BigInteger) obj[1]);
+            post.setPostId((BigInteger) obj[2]);
+            post.setPostName((String) obj[3]);
+            post.setUserLastname((String) obj[4]);
+            post.setNameUser((String) obj[5]);
+            post.setUserPhone((String) obj[6]);
+            postByUsers.add(post);
+        });
+        return postByUsers;
     }
 
     @GetMapping("/read/user/{userId}")

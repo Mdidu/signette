@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
@@ -24,10 +26,14 @@ public class PostType implements Serializable {
 	private String postName;
 
 	//bi-directional many-to-one association to Post
-	@OneToMany(mappedBy="posttype", fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="posttype", fetch=FetchType.LAZY)
+	@JsonIgnore
 	private List<Post> posts;
 
 	public PostType() {
+	}
+	public PostType(Long id) {
+		this.postId=id;
 	}
 
 	public long getPostId() {

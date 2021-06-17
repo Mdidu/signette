@@ -49,8 +49,8 @@ public class PostServiceImpl implements PostService {
         return test;
     }
 
-    public List<Post> findByTripId(long id) {
-        return postRepository.findById_TripId(id);
+    public List<Object[]> findByTripId(long id) {
+        return postRepository.findByTripId(id);
     }
 
     @Override
