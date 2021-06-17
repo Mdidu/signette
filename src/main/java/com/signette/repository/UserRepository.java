@@ -1,5 +1,6 @@
 package com.signette.repository;
 
+import com.signette.domains.Role;
 import com.signette.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -11,5 +12,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Optional<User> findByUserMail(String mail);
     boolean existsByUserMail(String mail);
     List<User> findByUserLastname(String lastname);
+    List<User> findUserByRoleIsLike(Role role);
 
 }

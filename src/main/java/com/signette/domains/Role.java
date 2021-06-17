@@ -34,6 +34,11 @@ public class Role implements Serializable {
 	public Role() {
 	}
 
+	public Role(long roleId, ERole roleType) {
+		this.roleId = roleId;
+		this.roleType = roleType;
+	}
+
 	public long getRoleId() {
 		return this.roleId;
 	}
