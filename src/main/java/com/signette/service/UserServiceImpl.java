@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Role;
 import com.signette.domains.User;
 import com.signette.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,4 +56,7 @@ public class UserServiceImpl implements UserService {
     public List<User> findByUserLastname(String lastname) {
         return userRepository.findByUserLastname(lastname);
     }
+
+    @Override
+    public List<User> findUserByRoleIsLike(Role role){ return userRepository.findUserByRoleIsLike(role); }
 }

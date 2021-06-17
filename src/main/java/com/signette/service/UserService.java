@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Role;
 import com.signette.domains.User;
 
 import java.util.List;
@@ -9,4 +10,5 @@ public interface UserService extends GlobalService<User>{
     Optional<User> findByUserMail(String mail);
     boolean existsByUserMail(String mail);
     List<User> findByUserLastname(String lastname);
+    List<User> findUserByRoleIsLike(Role role);
 }

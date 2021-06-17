@@ -1,5 +1,7 @@
 package com.signette.controllers;
 
+import com.signette.domains.ERole;
+import com.signette.domains.Role;
 import com.signette.domains.User;
 import com.signette.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,11 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @GetMapping("/readUser")
+    public List<User> readUser(){
+        return userService.findUserByRoleIsLike(new Role(1, ERole.ROLE_USER));
+    }
 
     @GetMapping("/read")
     public List<User> read(){
