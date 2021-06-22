@@ -17,9 +17,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/readUser")
-    public List<User> readUser(){
-        return userService.findUserByRoleIsLike(new Role(1, ERole.ROLE_USER));
+    @GetMapping("/readByRole/{id}")
+    public List<User> readByRole(@PathVariable long id){
+        return userService.findUserByRole_RoleId(id);
     }
 
     @GetMapping("/read")

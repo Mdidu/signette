@@ -58,5 +58,5 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> findUserByRoleIsLike(Role role){ return userRepository.findUserByRoleIsLike(role); }
+    public List<User> findUserByRole_RoleId(Long id){ return userRepository.findUserByRole_RoleId(id); }
 }
