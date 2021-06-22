@@ -58,5 +58,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<User> findByUserLastnameContainsIgnoreCaseAndRole_RoleId(String lastname, Long id) {
+        return userRepository.findByUserLastnameContainsIgnoreCaseOrUserUsernameContainsIgnoreCaseAndRole_RoleId(lastname,lastname,id);
+    }
+
+    @Override
     public List<User> findUserByRole_RoleId(Long id){ return userRepository.findUserByRole_RoleId(id); }
+
+
 }

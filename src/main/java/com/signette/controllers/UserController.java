@@ -36,6 +36,11 @@ public class UserController {
     @GetMapping("/read/lastname/{lastname}")
     public List<User> readByLastName(@PathVariable String lastname) { return userService.findByUserLastname(lastname); }
 
+    @GetMapping("/readBylastname/{lastname}/AndByRole/{id}")
+    public List<User> readByLastNameByRole(@PathVariable String lastname,@PathVariable long id) {
+        return userService.findByUserLastnameContainsIgnoreCaseAndRole_RoleId(lastname,id);
+    }
+
     @PostMapping("/add")
     public void add(@RequestBody User user){
         userService.add(user);

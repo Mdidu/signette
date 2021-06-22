@@ -10,5 +10,6 @@ public interface UserService extends GlobalService<User>{
     Optional<User> findByUserMail(String mail);
     boolean existsByUserMail(String mail);
     List<User> findByUserLastname(String lastname);
+    List<User> findByUserLastnameContainsIgnoreCaseAndRole_RoleId(String lastname, Long id);
     List<User> findUserByRole_RoleId(Long id);
 }
