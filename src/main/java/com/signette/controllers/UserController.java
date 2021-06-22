@@ -17,9 +17,9 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @GetMapping("/readUser")
-    public List<User> readUser(){
-        return userService.findUserByRoleIsLike(new Role(1, ERole.ROLE_USER));
+    @GetMapping("/readByRole/{id}")
+    public List<User> readByRole(@PathVariable long id){
+        return userService.findUserByRole_RoleId(id);
     }
 
     @GetMapping("/read")
@@ -35,6 +35,11 @@ public class UserController {
 
     @GetMapping("/read/lastname/{lastname}")
     public List<User> readByLastName(@PathVariable String lastname) { return userService.findByUserLastname(lastname); }
+
+    @GetMapping("/readBylastname/{lastname}/AndByRole/{id}")
+    public List<User> readByLastNameByRole(@PathVariable String lastname,@PathVariable long id) {
+        return userService.findByUserLastnameContainsIgnoreCaseAndRole_RoleId(lastname,id);
+    }
 
     @PostMapping("/add")
     public void add(@RequestBody User user){
