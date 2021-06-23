@@ -26,4 +26,5 @@ public interface PostRepository extends JpaRepository<Post, PostPK> {
 
     @Query(value = "SELECT trip.trip_id, post.user_id, posttype.post_name, center.center_name, client.client_wording, trip.trip_end_date FROM public.post LEFT JOIN public.trip ON public.trip.trip_id = public.post.trip_id LEFT JOIN public.posttype ON public.posttype.post_id = public.post.post_id LEFT JOIN public.center ON public.trip.center_id = public.center.center_id LEFT JOIN public.client ON public.client.client_id = public.trip.client_id WHERE user_id = :userId", nativeQuery = true)
     List<Object[]> findByPost(@Param("userId") long userId);
+
 }

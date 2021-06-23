@@ -57,13 +57,13 @@ public class PostController {
         postService.add(post);
     }
 
-    @PutMapping("/update/trip/{id}/user/{userid}")
+    @PutMapping("/updatetrip/{id}/user/{userid}")
     public void updateByTripAndUser(@PathVariable long id,@PathVariable long userid, @RequestBody Post post) {
         post.setId(post.setId(new PostPK(id,userid)));
         postService.update(post);
     }
 
-    @DeleteMapping("/delete/trip/{tripId}/user/{userid}")
+    @DeleteMapping("/deletetrip/{tripId}/user/{userid}")
     public void deleteByTripAndUser(@PathVariable long tripId, @PathVariable long userId) {
         postService.delete(postService.findByTripIdAndUserId(tripId,userId));
     }
