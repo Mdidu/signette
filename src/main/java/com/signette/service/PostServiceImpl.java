@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -45,8 +46,17 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Object[]> findByTripByCenter(long id) {
-        List<Object[]> test = postRepository.findByTripByCenter(id);
-        return test;
+        return postRepository.findByTripByCenter(id);
+    }
+
+    @Override
+    public List<Object[]> findByPostUser(Date date, long userId) {
+        return postRepository.findByPostUser(date, userId);
+    }
+
+    @Override
+    public List<Object[]> findByPost(long userId) {
+        return postRepository.findByPost(userId);
     }
 
     public List<Object[]> findByTripId(long id) {

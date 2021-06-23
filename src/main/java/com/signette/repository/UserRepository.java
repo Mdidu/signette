@@ -1,10 +1,12 @@
 package com.signette.repository;
 
 import com.signette.domains.Role;
+import com.signette.domains.Trip;
 import com.signette.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,5 +21,4 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
     List<User> findByUserLastname(String lastname);
     List<User> findUserByRole_RoleId(Long id);
-
 }

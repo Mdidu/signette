@@ -2,11 +2,13 @@ package com.signette.controllers;
 
 import com.signette.domains.ERole;
 import com.signette.domains.Role;
+import com.signette.domains.Trip;
 import com.signette.domains.User;
 import com.signette.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -31,7 +33,6 @@ public class UserController {
     public User readById(@PathVariable long id){
         return userService.findById(id);
     }
-
 
     @GetMapping("/read/lastname/{lastname}")
     public List<User> readByLastName(@PathVariable String lastname) { return userService.findByUserLastname(lastname); }
