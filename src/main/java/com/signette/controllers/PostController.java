@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -66,6 +67,7 @@ public class PostController {
     public void deleteByTripAndUser(@PathVariable long tripId, @PathVariable long userId) {
         postService.delete(postService.findByTripIdAndUserId(tripId,userId));
     }
+
   // Recover center name + nbTrip of employee by center
     @GetMapping("/readTripByCenter/{id}")
     public List<TripByCenter> findByTrip(@PathVariable long id) {
@@ -82,5 +84,31 @@ public class PostController {
         }
 
         return listTripByCenters;
+    }
+
+    @GetMapping("/readDate/id/{id}")
+    public List<PostUser> readByDateAndUserId(@PathVariable long id) {
+        Date date = new Date();
+        List<Object[]> listObject = postService.findByPostUser(date, id);
+        List<PostUser> listPostUsers = new ArrayList<>();
+
+        for(Object[] obj : listObject) {
+            PostUser postUser = new PostUser((BigInteger) obj[0], (BigInteger) obj[1], (String) obj[2], (String) obj[3], (String) obj[4], (Date) obj[5]);
+            listPostUsers.add(postUser);
+        }
+        return listPostUsers;
+    }
+
+    @GetMapping("/readByPost/{id}")
+    public List<PostUser> readByPostAndUserId(@PathVariable long id) {
+        List<Object[]> listObject = postService.findByPost(id);
+        List<PostUser> listPostUsers = new ArrayList<>();
+
+        for(Object[] obj : listObject) {
+            PostUser postUser = new PostUser((BigInteger) obj[0], (BigInteger) obj[1], (String) obj[2], (String) obj[3], (String) obj[4], (Date) obj[5]);
+            listPostUsers.add(postUser);
+        }
+
+        return listPostUsers;
     }
 }
