@@ -41,6 +41,7 @@ public class TripController {
 
     }
 
+
     @GetMapping("/read/{id}")
     public Trip readById(@PathVariable long id) {
         return tripService.findById(id);
