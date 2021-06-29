@@ -20,6 +20,7 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findByUserLastnameContainsIgnoreCaseOrUserUsernameContainsIgnoreCaseAndRole_RoleId(String userLastname, String userUsername, long role_roleId);
 
     List<User> findByUserLastname(String lastname);
+
     List<User> findUserByRole_RoleId(Long id);
 
 }

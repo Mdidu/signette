@@ -18,4 +18,6 @@ public interface PostService extends GlobalService<Post> {
     List<Object[]> findByPostUser(Date date, long userId);
 
     List<Object[]> findByPost(long userId);
+
+    List<Object[]> findTripByUser(long id);
 }

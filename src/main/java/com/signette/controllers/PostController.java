@@ -111,4 +111,23 @@ public class PostController {
 
         return listPostUsers;
     }
+
+    // Recover Trips of employee
+    @GetMapping("/findTripByUser/{id}")
+    public List<TripEvent> findByUserTrip(@PathVariable long id) {
+        List<Object[]> listTrip = postService.findTripByUser(id);
+        List<TripEvent> listTripEvent = new ArrayList<>();
+        // Convert object List n TripByCenter List
+        for(Object[] obj : listTrip) {
+            TripEvent trip = new TripEvent();
+            trip.setId(""+obj[0]);
+            trip.setEnd((Date) obj[1]);
+            trip.setStart((Date) obj[2]);
+            trip.setTitle((String) obj[3] +" - "+ obj[4]);
+            listTripEvent.add(trip);
+        }
+        System.out.println(listTripEvent);
+        return listTripEvent;
+    }
+
 }
