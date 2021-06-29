@@ -63,7 +63,7 @@ public class PostController {
         postService.update(post);
     }
 
-    @DeleteMapping("/deletetrip/{tripId}/user/{userid}")
+    @DeleteMapping("/deletetrip/{tripId}/user/{userId}")
     public void deleteByTripAndUser(@PathVariable long tripId, @PathVariable long userId) {
         postService.delete(postService.findByTripIdAndUserId(tripId,userId));
     }
