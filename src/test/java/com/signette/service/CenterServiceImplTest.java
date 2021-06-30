@@ -65,13 +65,12 @@ class CenterServiceImplTest {
     @Test
     void update() {
         Center center = centerService.findById(2);
+        Center center3 = new Center(2,"comment3","mail2","centerName2","centerPhone2","centerPicture2");
 
-        center2.setCenterComment("new comment");
+        centerService.update(center3);
+        verify(centerRepository).save(center3);
 
-        centerService.update(center2);
-        verify(centerRepository).save(center2);
-
-        assertThat(center.getCenterComment()).isNotEqualTo(center2.getCenterComment());
+        assertThat(center.getCenterComment()).isNotEqualTo(center3.getCenterComment());
     }
 
     @Test
