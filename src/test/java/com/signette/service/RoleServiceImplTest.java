@@ -48,7 +48,6 @@ public class RoleServiceImplTest {
         initMocks(this);
 
         when(roleRepository.findAll()).thenReturn(listRoles);
-        when(roleRepository.save(Matchers.any(Role.class))).thenReturn(roleUser);
         when(roleRepository.findById(Matchers.anyLong())).thenReturn(Optional.ofNullable(roleUser));
         when(roleRepository.findByRoleType(Matchers.any(ERole.class))).thenReturn(Optional.ofNullable(roleUser));
     }
