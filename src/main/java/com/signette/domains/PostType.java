@@ -32,6 +32,12 @@ public class PostType implements Serializable {
 
 	public PostType() {
 	}
+
+	public PostType(long postId, String postName) {
+		this.postId = postId;
+		this.postName = postName;
+	}
+
 	public PostType(Long id) {
 		this.postId=id;
 	}
