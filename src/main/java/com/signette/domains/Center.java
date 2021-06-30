@@ -53,6 +53,23 @@ public class Center implements Serializable {
 	public Center() {
 	}
 
+	public Center(String centerComment, String centerMail, String centerName, String centerPhone, String centerPicture){
+		this.centerComment=centerComment;
+		this.centerMail=centerMail;
+		this.centerName=centerName;
+		this.centerPhone=centerPhone;
+		this.centerPicture=centerPicture;
+	}
+
+	public Center(long centerId, String centerComment, String centerMail, String centerName, String centerPhone, String centerPicture){
+		this.centerId=centerId;
+		this.centerComment=centerComment;
+		this.centerMail=centerMail;
+		this.centerName=centerName;
+		this.centerPhone=centerPhone;
+		this.centerPicture=centerPicture;
+	}
+
 	public long getCenterId() {
 		return this.centerId;
 	}
