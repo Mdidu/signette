@@ -50,6 +50,8 @@ class AddressServiceImplTest {
 
         initMocks(this);
 
+
+        when(addressRepository.save(Matchers.any(Address.class))).thenReturn(address1);
         when(addressRepository.findAll()).thenReturn(listAddresses);
         when(addressRepository.findById(Matchers.anyLong())).thenReturn(Optional.ofNullable(address1));
     }

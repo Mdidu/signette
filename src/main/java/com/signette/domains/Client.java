@@ -53,6 +53,14 @@ public class Client implements Serializable {
 
 	}
 
+	public Client(long clientId, String clientMail, String clientPhone, String clientWording, Address address) {
+		this.clientId = clientId;
+		this.clientMail = clientMail;
+		this.clientPhone = clientPhone;
+		this.clientWording = clientWording;
+		this.address = address;
+	}
+
 	public Client(long id) {
 		this.clientId = id;
 	}
