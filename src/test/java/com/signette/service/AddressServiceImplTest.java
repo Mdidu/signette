@@ -42,7 +42,7 @@ class AddressServiceImplTest {
     void setUp() {
         listAddresses = new ArrayList<>();
 
-        address1 = new Address(1,"Le Quesnoy", "France", 8, "Rue du Java");
+        address1 = new Address(1,"Le Quesnoy", "France", 8, "Rue du test");
         address2 = new Address(2,"Paris", "France", 12, "Rue du Java");
 
         listAddresses.add(address1);
@@ -70,18 +70,16 @@ class AddressServiceImplTest {
 
     @Test
     void update() {
-        Address getAddress = addressService.findById(2);
+        Address getAddress = addressService.findById(address1.getAddressId());
+        Address address3 = new Address(1,"Le Quesnoy", "France", 8, "Rue du test");
 
-        address2.setAddressStreet("Rue de vue");
+        address1.setAddressStreet("Rue de vue");
 
-        given(addressRepository.findById(address2.getAddressId())).willReturn(Optional.of(address2));
+        addressService.update(address1);
 
-        addressService.update(address2);
-        Address getAddressPostUpdate = addressService.findById(2);
+        verify(addressRepository).save(address1);
 
-        verify(addressRepository).save(address2);
-
-        assertNotEquals(getAddressPostUpdate, getAddress);
+        assertNotEquals(address3.getAddressStreet(), getAddress.getAddressStreet());
     }
 
     @Test
