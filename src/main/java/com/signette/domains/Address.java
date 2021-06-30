@@ -52,6 +52,21 @@ public class Address implements Serializable {
 	public Address() {
 	}
 
+	public Address(String addressCity, String addressCountry, long addressNumber, String addressStreet) {
+		this.addressCity = addressCity;
+		this.addressCountry = addressCountry;
+		this.addressNumber = addressNumber;
+		this.addressStreet = addressStreet;
+	}
+
+	public Address(long addressId, String addressCity, String addressCountry, long addressNumber, String addressStreet) {
+		this.addressId = addressId;
+		this.addressCity = addressCity;
+		this.addressCountry = addressCountry;
+		this.addressNumber = addressNumber;
+		this.addressStreet = addressStreet;
+	}
+
 	public long getAddressId() {
 		return this.addressId;
 	}
