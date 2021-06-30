@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.PostByUser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +50,7 @@ class AddressServiceImplTest {
 
         initMocks(this);
 
+
         when(addressRepository.save(Matchers.any(Address.class))).thenReturn(address1);
         when(addressRepository.findAll()).thenReturn(listAddresses);
         when(addressRepository.findById(Matchers.anyLong())).thenReturn(Optional.ofNullable(address1));
@@ -56,8 +58,8 @@ class AddressServiceImplTest {
 
     @Test
     void addAdresse() {
-        Address getAddress = addressService.addAdresse(address1);
-        assertThat(getAddress).isEqualTo(address1);
+        addressService.addAdresse(address1);
+        verify(addressRepository).save(address1);
     }
 
     @Test
@@ -72,21 +74,25 @@ class AddressServiceImplTest {
 
         address2.setAddressStreet("Rue de vue");
 
+        given(addressRepository.findById(address2.getAddressId())).willReturn(Optional.of(address2));
+
         addressService.update(address2);
+        Address getAddressPostUpdate = addressService.findById(2);
+
         verify(addressRepository).save(address2);
 
-        assertThat(getAddress.getAddressStreet()).isNotEqualTo(address2.getAddressStreet());
+        assertNotEquals(getAddressPostUpdate, getAddress);
     }
 
     @Test
     void findAll() {
         List<Address> getAddress = addressService.findAll();
-        assertThat(getAddress.size()).isEqualTo(2);
+        assertEquals(2, getAddress.size());
     }
 
     @Test
     void findById() {
         Address getAddress = addressService.findById(1);
-        assertThat(getAddress.getAddressId()).isEqualTo(address1.getAddressId());
+        assertEquals(address1.getAddressId(), getAddress.getAddressId());
     }
 }
