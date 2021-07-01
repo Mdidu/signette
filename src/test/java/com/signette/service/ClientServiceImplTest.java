@@ -68,11 +68,10 @@ class ClientServiceImplTest {
 
     @Test
     void update() {
-        Client getClient = clientService.findById(1L);
         Client client3 = new Client(1, "Jeanmarsseau@gmail.com", "0000000000", "Ecole Jules Vernes", address1);
         clientService.update(client3);
         verify(clientRepository).save(client3);
-        assertThat(getClient.getClientPhone()).isNotEqualTo(client3.getClientPhone());
+        assertThat(client1.getClientPhone()).isNotEqualTo(client3.getClientPhone());
     }
 
     @Test

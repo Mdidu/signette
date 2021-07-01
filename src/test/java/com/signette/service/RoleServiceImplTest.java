@@ -54,14 +54,10 @@ public class RoleServiceImplTest {
 
     @Test
     void update() {
-        Role getRole = roleService.findById(2);
-
-        roleModerator.setRoleType(ERole.ROLE_ADMIN);
-
-        roleService.update(roleModerator);
-        verify(roleRepository).save(roleModerator);
-
-        assertThat(getRole.getRoleType()).isNotEqualTo(roleModerator.getRoleType());
+        Role role1 = new Role(1L, ERole.ROLE_MODERATOR);
+        roleService.update(role1);
+        verify(roleRepository).save(role1);
+        assertThat(roleUser.getRoleType()).isNotEqualTo(role1.getRoleType());
     }
 
     @Test
