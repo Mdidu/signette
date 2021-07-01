@@ -11,10 +11,12 @@ import org.mockito.Matchers;
 import org.mockito.Mock;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -58,11 +60,8 @@ public class PostServiceImplTest {
     @BeforeEach
     void setUp() {
         initPostAndListPost();
-
         initObjectsByTripId();
-
         initObjectsTripByUser();
-
         initObjectsBPost();
         initObjectsByTripByCenter();
 
@@ -70,7 +69,6 @@ public class PostServiceImplTest {
 
         when(postRepository.save(Matchers.any(Post.class))).thenReturn(post1);
         when(postRepository.findAll()).thenReturn(listPost);
-        when(postRepository.findByTripByCenter(Matchers.anyLong())).thenReturn(listObjectByTripByCenter);
         when(postRepository.findByPostUser(Matchers.any(Date.class) ,Matchers.anyLong())).thenReturn(listObjectByPost);
         when(postRepository.findByPost(Matchers.anyLong())).thenReturn(listObjectByPost);
         when(postRepository.findTripByUser(Matchers.anyLong())).thenReturn(listObjectTripByUser);
@@ -171,7 +169,7 @@ public class PostServiceImplTest {
         objectByTripByCenter1 = new Object[4];
         objectByTripByCenter1[0] = new BigInteger(String.valueOf(1));
         objectByTripByCenter1[1] = "Loisir1";
-        objectByTripByCenter1[2] = "Clovis";
+        objectByTripByCenter1[2] = "Louis";
         objectByTripByCenter1[3] = "Random";
 
         //Define objectByTripByCenter2
@@ -184,7 +182,7 @@ public class PostServiceImplTest {
         //Define objectByTripByCenter3
         objectByTripByCenter3 = new Object[4];
         objectByTripByCenter3[0] = new BigInteger(String.valueOf(2));
-        objectByTripByCenter3[1] = "Loisir2";
+        objectByTripByCenter3[1] = "Loisir3";
         objectByTripByCenter3[2] = "Louis";
         objectByTripByCenter3[3] = "Random";
 
@@ -226,14 +224,22 @@ public class PostServiceImplTest {
 
     @Test
     void findByTripByCenter() {
-        List<Object[]> getPost = postService.findByTripByCenter(1l);
+        List<Object[]> listTrie = listObjectByTripByCenter.stream()
+                .filter(obj -> obj[2]=="Louis")
+                .filter(obj -> obj[3]=="Random")
+                .filter(distinctByTrip(obj -> obj[1]))
+                .collect(Collectors.toList());
 
-        getPost.forEach((post) -> {
-            System.out.println(post[0] + " " + post[1]);
-        });
-//        verify(postRepository).findByTripByCenter(1l);
-        assertEquals(listObjectByTripByCenter, getPost);
-        assertNotEquals(listObjectByTripByCenter.size(), getPost.size());
+        System.out.println(listObjectByTripByCenter.size());
+        System.out.println(listTrie.size());
+
+        assertEquals(listObjectByTripByCenter, listTrie);
+    }
+
+    public static <T> Predicate<T> distinctByTrip(Function<? super T, Object> keyExtractor)
+    {
+        Map<Object, Boolean> map = new ConcurrentHashMap<>();
+        return t -> map.putIfAbsent(keyExtractor.apply(t), Boolean.TRUE) == null;
     }
 
     @Test
