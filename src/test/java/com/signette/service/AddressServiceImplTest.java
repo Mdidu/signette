@@ -74,6 +74,7 @@ class AddressServiceImplTest {
         address1.setAddressStreet("Rue de vue");
         addressService.update(address1);
         verify(addressRepository).save(address1);
+
         assertNotEquals(address3.getAddressStreet(), address1.getAddressStreet());
     }
 

@@ -24,6 +24,7 @@ public class PostPK implements Serializable {
 
 	public PostPK() {
 	}
+
 	public long getTripId() {
 		return this.tripId;
 	}

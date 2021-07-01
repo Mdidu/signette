@@ -26,6 +26,11 @@ public class Post implements Serializable {
 	public Post() {
 	}
 
+	public Post(PostPK id, PostType posttype) {
+		this.id = id;
+		this.posttype = posttype;
+	}
+
 	public PostPK getId() {
 		return this.id;
 	}
