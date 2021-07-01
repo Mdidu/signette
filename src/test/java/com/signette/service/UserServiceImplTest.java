@@ -30,6 +30,8 @@ class UserServiceImplTest {
     Role roleUser;
     Address address1;
     Address address2;
+    Date date2;
+    Date date;
 
     List<User> listUsers;
 
@@ -39,8 +41,8 @@ class UserServiceImplTest {
 
         address1 = new Address(1,"Le Quesnoy", "France", 8, "Rue du Java");
         address2 = new Address(2,"Paris", "France", 12, "Rue du Java");
-        Date date = new Date(1995, Calendar.JANUARY,10);
-        Date date2 = new Date(2005, Calendar.NOVEMBER,25);
+        date = new Date(1995, Calendar.JANUARY,10);
+        date2 = new Date(2005, Calendar.NOVEMBER,25);
         roleUser = new Role(1L, ERole.ROLE_USER);
         user1 = new User(1,date,date2,"Cousin","clara@gmail.com","Clara",7123456789L,"motdepasse","0663899509","Clara",address1, roleUser);
         user2 = new User(2,date,date2,"Lefevre","theo@gmail.com","Theo",7123456789L,"motdepasse","0663899509","Theo",address2, roleUser);
@@ -70,14 +72,10 @@ class UserServiceImplTest {
 
     @Test
     void update() {
-        User getUser = userService.findById(1L);
-        Date date = new Date(1995, Calendar.JANUARY,10);
-        Date date2 = new Date(2005, Calendar.NOVEMBER,25);
-        User user3 = new User(date, date2, "Cousin", "clar@gmail.com", "Clara", 7123456789L, "motdepasse", "0663899509", "Clara");
-
+        User user3 = new User(1,date, date2, "Cousin", "clar@gmail.com", "Clara", 7123456789L, "motdepasse", "0663899509", "Clara",address1, roleUser);
         userService.update(user3);
         verify(userRepository).save(user3);
-        assertThat(getUser.getUserMail()).isNotEqualTo(user3.getUserMail());
+        assertThat(user1.getUserMail()).isNotEqualTo(user3.getUserMail());
     }
 
     @Test

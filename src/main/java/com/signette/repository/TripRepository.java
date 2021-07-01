@@ -9,6 +9,7 @@ import java.util.List;
 
 public interface TripRepository extends JpaRepository<Trip,Long> {
 
+    @Query("select t from Trip t where t.client = ?1")
     List<Trip> findTripByClient(Client id);
 
 

@@ -61,7 +61,6 @@ class PostTypeServiceImplTest {
 
     @Test
     void update() {
-        PostType getPostType = postTypeService.findById(postType1.getPostId());
         PostType postType3 = new PostType(1, "Animateur pour adulte");
 
         postType1.setPostName("Animateur pour mineur");
@@ -70,7 +69,7 @@ class PostTypeServiceImplTest {
 
         verify(postTypeRepository).save(postType1);
 
-        assertNotEquals(postType3.getPostName(), getPostType.getPostName());
+        assertNotEquals(postType3.getPostName(), postType1.getPostName());
     }
 
     @Test
