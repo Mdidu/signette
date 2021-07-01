@@ -70,7 +70,7 @@ class AddressServiceImplTest {
 
     @Test
     void update() {
-        Address getAddress = addressService.findById(address1.getAddressId());
+//        Address getAddress = addressService.findById(address1.getAddressId());
         Address address3 = new Address(1,"Le Quesnoy", "France", 8, "Rue du test");
 
         address1.setAddressStreet("Rue de vue");
@@ -79,7 +79,7 @@ class AddressServiceImplTest {
 
         verify(addressRepository).save(address1);
 
-        assertNotEquals(address3.getAddressStreet(), getAddress.getAddressStreet());
+        assertNotEquals(address3.getAddressStreet(), address1.getAddressStreet());
     }
 
     @Test
