@@ -61,6 +61,21 @@ public class Trip implements Serializable {
 	public Trip() {
 	}
 
+	public Trip (Date tripEndDate, Date tripStartDate,Client client,Center center){
+		this.tripEndDate=tripEndDate;
+		this.tripStartDate=tripStartDate;
+		this.client = client;
+		this.center=center;
+	}
+
+	public Trip (long tripId,Date tripEndDate, Date tripStartDate,Client client,Center center){
+		this.tripId = tripId;
+		this.tripEndDate=tripEndDate;
+		this.tripStartDate=tripStartDate;
+		this.client = client;
+		this.center=center;
+	}
+
 	public long getTripId() {
 		return this.tripId;
 	}
