@@ -3,6 +3,8 @@ package com.signette.service;
 import com.signette.domains.Center;
 import com.signette.repository.CenterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -32,7 +34,12 @@ public class CenterServiceImpl implements CenterService {
 
     @Override
     public List<Center> findAll() {
-        return centerRepository.findAll();
+        return null;
+    }
+
+    @Override
+    public Page<Center> findAll(Pageable pageable) {
+        return centerRepository.findAll(pageable);
     }
 
     @Override
@@ -41,5 +48,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public List<Center> findByCenterName(String centerName) { return centerRepository.findByCenterNameContaining(centerName); }
+    public Page<Center> findByCenterName(String centerName, Pageable pageable) { return centerRepository.findByCenterNameContaining(centerName, pageable); }
+
+
 }
