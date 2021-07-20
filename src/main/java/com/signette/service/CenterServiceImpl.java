@@ -48,7 +48,7 @@ public class CenterServiceImpl implements CenterService {
     }
 
     @Override
-    public Page<Center> findByCenterName(String centerName, Pageable pageable) { return centerRepository.findByCenterNameContaining(centerName, pageable); }
+    public Page<Center> findByCenterName(String centerName, Pageable pageable) { return centerRepository.findByCenterNameContainsIgnoreCase(centerName, pageable); }
 
 
 }

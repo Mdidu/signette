@@ -1,8 +1,11 @@
 package com.signette.service;
 
+import com.signette.domains.Center;
 import com.signette.domains.Client;
 import com.signette.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,5 +46,15 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public List<Client> findClientByClientWording(String name) {
         return clientRepository.findClientByClientWording(name);
+    }
+
+    @Override
+    public Page<Client> findByClientByClientWording(String title, Pageable pageable) {
+       return clientRepository.findClientByClientWordingContainsIgnoreCase(title, pageable);
+    }
+
+    @Override
+    public Page<Client> findAll(Pageable pageable) {
+            return clientRepository.findAll(pageable);
     }
 }
