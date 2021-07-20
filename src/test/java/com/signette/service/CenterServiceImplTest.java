@@ -47,7 +47,7 @@ class CenterServiceImplTest {
         when(centerRepository.findAll()).thenReturn(listCenter);
         when(centerRepository.save(Matchers.any(Center.class))).thenReturn(center1);
         when(centerRepository.findById(Matchers.anyLong())).thenReturn(Optional.ofNullable(center1));
-        when(centerRepository.findByCenterNameContaining(center1.getCenterName())).thenReturn(List.of(center1));
+        //when(centerRepository.findByCenterNameContaining(center1.getCenterName())).thenReturn(List.of(center1));
     }
 
     @Test
@@ -85,12 +85,12 @@ class CenterServiceImplTest {
         assertThat(center.getCenterId()).isEqualTo(center1.getCenterId());
     }
 
-    @Test
+    /*@Test
     void findByCenterName() {
         List<Center> center = centerService.findByCenterName(center1.getCenterName());
         List<Center> center2=new ArrayList<>();
         center2.add(center1);
 
         assertThat(center.size()).isEqualTo(center2.size());
-    }
+    }*/
 }
