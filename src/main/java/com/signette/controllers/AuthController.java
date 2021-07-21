@@ -13,10 +13,7 @@ import com.signette.security.auth.payload.request.LoginRequest;
 import com.signette.security.auth.payload.request.SignupRequest;
 import com.signette.security.auth.payload.response.JwtResponse;
 import com.signette.security.auth.payload.response.MessageResponse;
-import com.signette.service.AddressService;
-import com.signette.service.RoleService;
-import com.signette.service.UserDetailsImpl;
-import com.signette.service.UserService;
+import com.signette.service.*;
 import com.signette.utils.Encrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +47,9 @@ public class AuthController {
 
     @Autowired
     JwtUtils jwtUtils;
+
+    @Autowired
+    EmailService emailService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
@@ -112,8 +112,9 @@ public class AuthController {
 
         user.setRole(roles);
         user.setAddress(address);
-        userService.add(user);
+        //userService.add(user);
 
+        emailService.sendMail(user.getUserMail(),"Bonjour, Bienvenue chez signette voici votre mot de passe de connexion : "+user.getUserPassword(),"Information concernant la création de votre compte");
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
 
     }
