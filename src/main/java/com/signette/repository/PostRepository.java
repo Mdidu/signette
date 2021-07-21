@@ -1,5 +1,6 @@
 package com.signette.repository;
 
+import com.signette.domains.DataContratPdf;
 import com.signette.domains.Post;
 import com.signette.domains.PostPK;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,6 +28,9 @@ public interface PostRepository extends JpaRepository<Post, PostPK> {
 
     @Query(value = "SELECT public.trip.trip_id,public.trip.trip_end_date,public.trip.trip_start_date, public.center.center_name, public.client.client_wording FROM public.post LEFT JOIN public.userentity ON public.userentity.user_id = public.post.user_id LEFT JOIN public.trip ON public.trip.trip_id = public.post.trip_id LEFT JOIN public.center ON public.trip.center_id = public.center.center_id LEFT JOIN public.client ON public.client.client_id = public.trip.client_id WHERE public.post.user_id =:user_id", nativeQuery = true)
     List<Object[]> findTripByUser(@Param("user_id") long id);
+
+    @Query(value = "SELECT userentity.name_user, userentity.user_lastname, userentity.user_mail, userentity.user_phone, trip.trip_start_date, trip.trip_end_date, center.center_name FROM post LEFT JOIN userentity ON userentity.user_id = post.user_id LEFT JOIN trip ON trip.trip_id = post.trip_id LEFT JOIN center ON center.center_id = trip.center_id WHERE public.post.trip_id = :trip_id AND public.post.user_id = :user_id", nativeQuery = true)
+    List<Object[]> findListPDFData(@Param("user_id") long userId, @Param("trip_id") long tripId);
 
     List<Post> findById_UserId(long userid);
 }

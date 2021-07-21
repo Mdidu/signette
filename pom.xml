@@ -18,6 +18,7 @@
         <java.version>11</java.version>
         <junit-jupiter.version>5.7.2</junit-jupiter.version>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,6 +95,32 @@
             <version>${junit-jupiter.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>6.10.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.lowagie</groupId>
+                    <artifactId>itext</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>8.0.1</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
+<!--        <dependency>-->
+<!--            <groupId>com.lowagie</groupId>-->
+<!--            <artifactId>itext</artifactId>-->
+<!--            <version>2.1.7</version>-->
+<!--        </dependency>-->
+
     </dependencies>
 
     <build>
