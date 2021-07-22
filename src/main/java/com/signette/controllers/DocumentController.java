@@ -1,10 +1,16 @@
 package com.signette.controllers;
 
+import com.itextpdf.text.DocumentException;
 import com.signette.domains.Document;
 import com.signette.service.DocumentService;
+import com.signette.signature.SignatureExternalHash;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
+import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.List;
 
 @RestController
@@ -14,6 +20,13 @@ public class DocumentController {
 
     @Autowired
     DocumentService documentService;
+    @Autowired
+    SignatureExternalHash signature;
+
+    @GetMapping("/sign/{id}")
+    public void sign(@PathVariable long id) throws GeneralSecurityException, DocumentException, IOException {
+        signature.signPdfDetached(documentService.findById(id).getDocumentLink(), "Sign" + documentService.findById(id).getDocumentName());
+    }
 
     @GetMapping("/read")
     public List<Document> read() {

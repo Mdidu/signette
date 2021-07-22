@@ -43,7 +43,7 @@ public class PDFService {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper, parameters, dataSource);
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "signedContrat.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "PDFContrat.pdf");
 
         return "path : " + path;
     }

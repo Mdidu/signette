@@ -38,6 +38,11 @@ public class Document implements Serializable {
 	public Document() {
 	}
 
+	public Document(String documentLink, String documentName) {
+		this.documentLink = documentLink;
+		this.documentName = documentName;
+	}
+
 	public long getDocumentId() {
 		return documentId;
 	}
@@ -61,14 +66,6 @@ public class Document implements Serializable {
 	public void setDocumentName(String documentName) {
 		this.documentName = documentName;
 	}
-
-//	public DocumentType getDocumenttype() {
-//		return this.documenttype;
-//	}
-//
-//	public void setDocumenttype(DocumentType documenttype) {
-//		this.documenttype = documenttype;
-//	}
 
 	public User getUser() {
 		return this.user;
