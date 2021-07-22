@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Document;
 import com.signette.domains.Post;
 import com.signette.domains.PostPK;
 import com.signette.domains.PostType;
@@ -62,6 +63,14 @@ public class PostServiceImpl implements PostService {
     @Override
     public List<Object[]> findTripByUser(long id) {
         return postRepository.findTripByUser(id);
+    }
+
+    @Override
+    public Document generateDocument(Post post,String path) {
+        Document document = new Document();
+        document.setDocumentName(post.getPosttype()+"-"+post.getId().getUserId()+"-"+post.getId().getTripId());
+        document.setDocumentLink(path);
+        return document;
     }
 
     public List<Object[]> findByTripId(long id) {

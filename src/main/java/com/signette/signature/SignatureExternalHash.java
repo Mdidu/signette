@@ -8,7 +8,9 @@ import com.itextpdf.text.pdf.PdfStamper;
 import com.itextpdf.text.pdf.security.*;
 import com.itextpdf.text.pdf.security.MakeSignature.CryptoStandard;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,6 +20,8 @@ import java.security.cert.Certificate;
 import java.util.Date;
 import java.util.Properties;
 
+@Service
+@Transactional
 public class SignatureExternalHash {
  
     /**

@@ -26,11 +26,6 @@ public class Document implements Serializable {
 	private String documentName;
 
 
-	//bi-directional many-to-one association to Documenttype
-	@ManyToOne
-	@JoinColumn(name="DOCUMENTTYPE_ID", nullable=false)
-	private DocumentType documenttype;
-
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="USER_ID")
@@ -42,6 +37,11 @@ public class Document implements Serializable {
 	private Trip trip;
 
 	public Document() {
+	}
+
+	public Document(String documentLink, String documentName) {
+		this.documentLink = documentLink;
+		this.documentName = documentName;
 	}
 
 	public long getDocumentId() {
@@ -66,14 +66,6 @@ public class Document implements Serializable {
 
 	public void setDocumentName(String documentName) {
 		this.documentName = documentName;
-	}
-
-	public DocumentType getDocumenttype() {
-		return this.documenttype;
-	}
-
-	public void setDocumenttype(DocumentType documenttype) {
-		this.documenttype = documenttype;
 	}
 
 	public User getUser() {

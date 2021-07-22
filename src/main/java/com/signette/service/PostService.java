@@ -1,5 +1,6 @@
 package com.signette.service;
 
+import com.signette.domains.Document;
 import com.signette.domains.Post;
 import org.springframework.data.repository.query.Param;
 
@@ -20,4 +21,6 @@ public interface PostService extends GlobalService<Post> {
     List<Object[]> findByPost(long userId);
 
     List<Object[]> findTripByUser(long id);
+
+    Document generateDocument(Post post,String path);
 }
