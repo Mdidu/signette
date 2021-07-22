@@ -1,6 +1,8 @@
 package com.signette.service;
 
 import com.signette.domains.Document;
+import com.signette.domains.Trip;
+import com.signette.domains.User;
 import com.signette.repository.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,5 +40,15 @@ public class DocumentServiceImpl implements DocumentService{
     @Override
     public Document findById(long id) {
         return documentRepository.findById(id).get();
+    }
+
+    @Override
+    public List<Document> findDocumentByUser(long id) {
+        return documentRepository.findDocumentByUser(new User(id));
+    }
+
+    @Override
+    public List<Document> findDocumentByTrip(long id) {
+        return documentRepository.findDocumentByTrip(new Trip(id));
     }
 }

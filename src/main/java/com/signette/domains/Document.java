@@ -25,7 +25,6 @@ public class Document implements Serializable {
 	@Column(name="DOCUMENT_NAME")
 	private String documentName;
 
-
 	//bi-directional many-to-one association to User
 	@ManyToOne
 	@JoinColumn(name="USER_ID")
