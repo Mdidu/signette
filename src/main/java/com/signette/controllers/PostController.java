@@ -1,10 +1,14 @@
 package com.signette.controllers;
 
 import com.signette.domains.*;
+import com.signette.service.DocumentService;
+import com.signette.service.PDFService;
 import com.signette.service.PostService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +21,10 @@ public class PostController {
 
     @Autowired
     PostService postService;
+    @Autowired
+    DocumentService documentService;
+    @Autowired
+    PDFService pdfService;
 
     @GetMapping("/read")
     public List<Post> read() {
@@ -53,8 +61,11 @@ public class PostController {
     }
 
     @PostMapping("/add")
-    public void add(@RequestBody Post post) {
+    public void add(@RequestBody Post post) throws JRException, FileNotFoundException {
         postService.add(post);
+        String path = pdfService.exportReport(post.getId().getUserId(), post.getId().getTripId());
+        documentService.add(postService.generateDocument(post, path));
+
     }
 
     @PutMapping("/updatetrip/{id}/user/{userid}")
