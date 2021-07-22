@@ -1,5 +1,7 @@
 package com.signette.domains;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Date;
@@ -49,6 +51,7 @@ public class User implements Serializable {
 	private String userUsername;
 
 	//bi-directional many-to-one association to Document
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Document> documents;
 
@@ -77,6 +80,9 @@ public class User implements Serializable {
 
 	public User() {}
 
+	public User(long id) {
+		this.userId = id;
+	}
 
 	public User(Date userDateOfBirth, Date userEntryDate, String userLastname, String userMail, String nameUser, long userNss, String userPassword, String userPhone, String userUsername) {
 		this.userDateOfBirth = userDateOfBirth;
@@ -105,7 +111,7 @@ public class User implements Serializable {
 		this.role = role;
 	}
 
-	public long getUserId() {
+    public long getUserId() {
 		return userId;
 	}
 

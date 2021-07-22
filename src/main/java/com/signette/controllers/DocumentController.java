@@ -40,4 +40,14 @@ public class DocumentController {
     public void delete(@PathVariable long id) {
         documentService.delete(documentService.findById(id));
     }
+
+    @GetMapping("/read/user/{id}")
+    public List<Document> readByUser(@PathVariable long id) {
+        return documentService.findDocumentByUser(id);
+    }
+
+    @GetMapping("/read/trip/{id}")
+    public List<Document> readByTrip(@PathVariable long id) {
+        return documentService.findDocumentByTrip(id);
+    }
 }
