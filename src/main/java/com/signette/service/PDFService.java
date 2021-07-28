@@ -16,6 +16,7 @@ public class PDFService {
 
     @Autowired
     PostRepository postRepository;
+
     public String exportReport(long userId, long tripId) throws FileNotFoundException, JRException {
         System.out.println("0");
         List<Object[]> listPDFData = postRepository.findListPDFData(userId, tripId);
@@ -33,7 +34,7 @@ public class PDFService {
         List<DataContratPdf> contrat = new ArrayList<>();
         contrat.add(data);
 
-        String path = "C://JasperReports/";
+        String path = "C://JasperReports/"; //TODO à mettre dans properties
         File file = ResourceUtils.getFile("classpath:contrat.jrxml");
 
         JasperReport jasper = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -43,8 +44,8 @@ public class PDFService {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper, parameters, dataSource);
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "PDFContrat.pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, path+"Contrat-"+data.getTripStartDate().toString().substring(0,9)+"-"+data.getUserLastname().trim()+"-"+data.getNameUser().trim()+"-"+data.getCenterName().trim()+".pdf");
 
-        return "path : " + path;
+        return path+"Contrat-"+data.getTripStartDate().toString().substring(0,9)+"-"+data.getUserLastname().trim()+"-"+data.getNameUser().trim()+"-"+data.getCenterName().trim()+".pdf";
     }
 }

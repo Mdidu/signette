@@ -68,7 +68,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public Document generateDocument(Post post,String path) {
         Document document = new Document();
-        document.setDocumentName(post.getPosttype()+"-"+post.getId().getUserId()+"-"+post.getId().getTripId());
+        document.setDocumentName(path.substring(18));
         document.setDocumentLink(path);
         return document;
     }
