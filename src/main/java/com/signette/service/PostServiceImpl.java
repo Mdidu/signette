@@ -1,9 +1,6 @@
 package com.signette.service;
 
-import com.signette.domains.Document;
-import com.signette.domains.Post;
-import com.signette.domains.PostPK;
-import com.signette.domains.PostType;
+import com.signette.domains.*;
 import com.signette.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -70,6 +67,12 @@ public class PostServiceImpl implements PostService {
         Document document = new Document();
         document.setDocumentName(path.substring(18));
         document.setDocumentLink(path);
+        Trip trip = new Trip();
+        trip.setTripId(post.getId().getTripId());
+        User user = new User();
+        user.setUserId(post.getId().getUserId());
+        document.setTrip(trip);
+        document.setUser(user);
         return document;
     }
 
