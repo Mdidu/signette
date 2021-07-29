@@ -25,7 +25,7 @@ public class DocumentController {
 
     @GetMapping("/sign/{id}")
     public void sign(@PathVariable long id) throws GeneralSecurityException, DocumentException, IOException {
-        signature.signPdfDetached(documentService.findById(id).getDocumentLink(), "Sign" + documentService.findById(id).getDocumentName());
+        signature.signPdfDetached(documentService.findById(id).getDocumentLink());
     }
 
     @GetMapping("/read")

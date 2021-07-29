@@ -47,7 +47,7 @@ public class SignatureExternalHash {
      * @throws KeyStoreException 
      * @throws Exception 
      */
-    public void signPdfDetached(String src, String dest) throws GeneralSecurityException, IOException, DocumentException {
+    public void signPdfDetached(String src) throws GeneralSecurityException, IOException, DocumentException {
     	// Private key and certificate
         String path = "zz.p12";
         KeyStore ks = KeyStore.getInstance("pkcs12", "BC");
@@ -59,14 +59,14 @@ public class SignatureExternalHash {
  
         // reader and stamper
         PdfReader reader = new PdfReader(src);
-        FileOutputStream os = new FileOutputStream(dest);
+        FileOutputStream os = new FileOutputStream(src);
         PdfStamper stamper = PdfStamper.createSignature(reader, os, '\0');
  
         // appearance
         PdfSignatureAppearance appearance = stamper.getSignatureAppearance();
-        appearance.setReason("Virement effectue ");
+        appearance.setReason("Contrat de travail");
         appearance.setLocation(""+new Date());
-        appearance.setVisibleSignature(new Rectangle(72, 732, 144, 780), 1, "sig");
+        appearance.setVisibleSignature(new Rectangle(72, 732, 144, 780), 1, "signature");
  
         // digital signature
         ExternalSignature es = new PrivateKeySignature(pk, "SHA-256", "BC");
@@ -75,12 +75,12 @@ public class SignatureExternalHash {
     }
  
    
-    public static void sign(String input,String SIGNED1)
+    public static void sign(String input)
         throws IOException, DocumentException, GeneralSecurityException {
         Security.addProvider(new BouncyCastleProvider());
         properties.load(new FileInputStream(PATH));
       
         SignatureExternalHash signatures = new SignatureExternalHash();
-        signatures.signPdfDetached(input, SIGNED1);
+        signatures.signPdfDetached(input);
     }
 }
