@@ -11,6 +11,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/posttype")
 public class PostTypeController {
+
     @Autowired
     PostTypeService postTypeService;
     @GetMapping("/read")

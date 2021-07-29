@@ -2,6 +2,8 @@ package com.signette.service;
 
 import com.signette.domains.*;
 import com.signette.repository.PostRepository;
+import com.signette.repository.TripRepository;
+import com.signette.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,10 @@ public class PostServiceImpl implements PostService {
 
     @Autowired
     PostRepository postRepository;
+    @Autowired
+    TripRepository tripRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public void add(Post post) {
@@ -67,10 +73,8 @@ public class PostServiceImpl implements PostService {
         Document document = new Document();
         document.setDocumentName(path.substring(18));
         document.setDocumentLink(path);
-        Trip trip = new Trip();
-        trip.setTripId(post.getId().getTripId());
-        User user = new User();
-        user.setUserId(post.getId().getUserId());
+        Trip trip = tripRepository.getById(post.getId().getTripId());
+        User user = userRepository.getById(post.getId().getUserId());
         document.setTrip(trip);
         document.setUser(user);
         return document;

@@ -44,8 +44,10 @@ public class PDFService {
 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasper, parameters, dataSource);
 
-        JasperExportManager.exportReportToPdfFile(jasperPrint, path+"Contrat-"+data.getTripStartDate().toString().substring(0,9)+"-"+data.getUserLastname().trim()+"-"+data.getNameUser().trim()+"-"+data.getCenterName().trim()+".pdf");
+        JasperExportManager.exportReportToPdfFile(jasperPrint, path + "Contrat-" + data.getTripStartDate().toString().substring(0, 9) + "-" + data.getUserLastname().trim() + "-" + data.getNameUser().trim() + "-" + data.getCenterName().trim() + ".pdf");
 
-        return path+"Contrat-"+data.getTripStartDate().toString().substring(0,9)+"-"+data.getUserLastname().trim()+"-"+data.getNameUser().trim()+"-"+data.getCenterName().trim()+".pdf";
+        return path + "Contrat-" + data.getTripStartDate().toString().substring(0, 9)
+                + "-" + data.getUserLastname().trim() + "-" + data.getNameUser().trim()
+                + "-" + data.getCenterName().trim() + ".pdf";
     }
 }

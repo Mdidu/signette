@@ -65,7 +65,6 @@ public class PostController {
         postService.add(post);
         String path = pdfService.exportReport(post.getId().getUserId(), post.getId().getTripId());
         documentService.add(postService.generateDocument(post, path));
-
     }
 
     @PutMapping("/updatetrip/{id}/user/{userid}")
